@@ -92,7 +92,8 @@ public class Client extends Personne {
     @Override
     public String toString() {
         
-        return "Nous avons Client "+this.nom_personne+" "+this.prenom_personne+" qui vit à l'adresse: "+this.num_voie_personne+" "+this.adresse_personne+", "+this.ville_personne+", "+this.pays_personne;
+        return "Nous avons le Client :"+this.nom_personne+" "+this.prenom_personne+" qui vit à l'adresse: "+this.num_voie_personne+" "+this.adresse_personne+", "+this.ville_personne+", "+this.pays_personne;
+    
     }
     
 }

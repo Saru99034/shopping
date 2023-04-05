@@ -336,6 +336,15 @@ public class PageCreationCompteEmploye extends javax.swing.JFrame {
     private void buttonCreerEmployeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreerEmployeActionPerformed
        try{
         connexionEmploye();
+        
+        //blindage des saisies dans la page de création
+        if((textNomEmploye.getText().length()==0)||(textPrenomEmploye.getText().length()==0)||(textTelEmploye.getText().length()==0)||(textMailEmploye.getText().length()==0)||(textNumVoieEmploye.getText().length()==0)||(textAdresseEmploye.getText().length()==0)||(textVilleEmploye.getText().length()==0)||(textPaysEmploye.getText().length()==0)||(textMdpEmploye.getText().length()==0))
+        {
+         JOptionPane.showMessageDialog(null,"Vous n'avez pas rempli entièrement les informations");
+ 
+        }else
+        {
+            
         pst=con.prepareStatement("INSERT INTO employe(id_employe,employe_nom,employe_prenom,employe_sexe,employe_tel,employe_mail,employe_num_voie,employe_adresse,employe_ville,employe_pays,employe_mdp) VALUES(NULL,?,?,?,?,?,?,?,?,?,?)");  //requête de création compte employé
         pst.setString(1,textNomEmploye.getText().toUpperCase());
         pst.setString(2,textPrenomEmploye.getText().toUpperCase());
@@ -354,7 +363,7 @@ public class PageCreationCompteEmploye extends javax.swing.JFrame {
         myEmploye=new Employe(textNomEmploye.getText().toUpperCase(),textPrenomEmploye.getText().toUpperCase(),numero_de_tel_employe,textMailEmploye.getText(),num_voie_employe,textAdresseEmploye.getText().toUpperCase(),textVilleEmploye.getText().toUpperCase(),textPaysEmploye.getText().toUpperCase(),textMdpEmploye.getText().toUpperCase());
         myEmploye.toString();
         JOptionPane.showMessageDialog(null,"Votre compte a été créé avec succès");
-
+        }
         
        }catch(SQLException e)
        {

@@ -311,6 +311,14 @@ public class Fenetre extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
+           
+            //blindage des saisies dans la page de création
+        if((textNomClient.getText().length()==0)||(textPrenomClient.getText().length()==0)||(textTelClient.getText().length()==0)||(textMailClient.getText().length()==0)||(textNumVoieClient.getText().length()==0)||(textAdresseClient.getText().length()==0)||(textVilleClient.getText().length()==0)||(textPaysClient.getText().length()==0)||(textMdpClient.getText().length()==0))
+        {
+         JOptionPane.showMessageDialog(null,"Vous n'avez pas rempli entièrement les informations");
+ 
+        }else
+        {
           String dataNomClient=textNomClient.getText().toUpperCase();  
           String dataPrenomClient=textPrenomClient.getText().toUpperCase(); 
           String dataTelClient=textTelClient.getText(); 
@@ -358,6 +366,7 @@ public class Fenetre extends javax.swing.JFrame {
           //afficherListeClients(listeClients);
           
           JOptionPane.showMessageDialog(null,"Votre compte a été créé avec succès");
+        }
         }catch(Exception e)
         {
             e.printStackTrace();
