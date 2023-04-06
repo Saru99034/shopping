@@ -6,6 +6,7 @@ package Fenetre;
 
 import java.sql.*;
 import Connexion.*;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -67,10 +68,20 @@ public class Fenetre extends javax.swing.JFrame {
                 textNomClientActionPerformed(evt);
             }
         });
+        textNomClient.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textNomClientKeyPressed(evt);
+            }
+        });
 
         textPrenomClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textPrenomClientActionPerformed(evt);
+            }
+        });
+        textPrenomClient.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textPrenomClientKeyPressed(evt);
             }
         });
 
@@ -79,10 +90,20 @@ public class Fenetre extends javax.swing.JFrame {
                 textTelClientActionPerformed(evt);
             }
         });
+        textTelClient.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textTelClientKeyPressed(evt);
+            }
+        });
 
         textMailClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textMailClientActionPerformed(evt);
+            }
+        });
+        textMailClient.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textMailClientKeyPressed(evt);
             }
         });
 
@@ -91,10 +112,20 @@ public class Fenetre extends javax.swing.JFrame {
                 textNumVoieClientActionPerformed(evt);
             }
         });
+        textNumVoieClient.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textNumVoieClientKeyPressed(evt);
+            }
+        });
 
         textAdresseClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textAdresseClientActionPerformed(evt);
+            }
+        });
+        textAdresseClient.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textAdresseClientKeyPressed(evt);
             }
         });
 
@@ -103,16 +134,31 @@ public class Fenetre extends javax.swing.JFrame {
                 textVilleClientActionPerformed(evt);
             }
         });
+        textVilleClient.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textVilleClientKeyPressed(evt);
+            }
+        });
 
         textPaysClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textPaysClientActionPerformed(evt);
             }
         });
+        textPaysClient.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textPaysClientKeyPressed(evt);
+            }
+        });
 
         textMdpClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textMdpClientActionPerformed(evt);
+            }
+        });
+        textMdpClient.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textMdpClientKeyPressed(evt);
             }
         });
 
@@ -282,7 +328,8 @@ public class Fenetre extends javax.swing.JFrame {
     }//GEN-LAST:event_textPrenomClientActionPerformed
 
     private void textTelClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textTelClientActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
+        
     }//GEN-LAST:event_textTelClientActionPerformed
 
     private void textMailClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textMailClientActionPerformed
@@ -381,6 +428,247 @@ public class Fenetre extends javax.swing.JFrame {
         coClient.setVisible(true);
     }//GEN-LAST:event_buttonRetourCoClientActionPerformed
 
+    private void textTelClientKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textTelClientKeyPressed
+        // TODO add your handling code here:
+        
+        String numTel=textTelClient.getText();
+        
+        int tailleNumTel=numTel.length();
+        
+        char verifNum=evt.getKeyChar();
+        
+        if((verifNum>='0') && (verifNum<='9'))
+        {
+            if(tailleNumTel<10){
+                textTelClient.setEditable(true);
+            }else
+            {
+                textTelClient.setEditable(false);
+            }
+        }else
+        {
+           if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ||evt.getExtendedKeyCode()==KeyEvent.VK_TAB) 
+           {
+               textTelClient.setEditable(true);
+           }else
+           {
+               textTelClient.setEditable(false);
+           }
+        }
+    }//GEN-LAST:event_textTelClientKeyPressed
+
+    private void textNumVoieClientKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textNumVoieClientKeyPressed
+        // TODO add your handling code here:
+        String numVoie=textNumVoieClient.getText();
+        
+        int tailleNumVoie=numVoie.length();
+        
+        char verifNumVoie=evt.getKeyChar();
+        
+        if((verifNumVoie>='0') && (verifNumVoie<='9'))
+        {
+            if(tailleNumVoie<4){
+                textNumVoieClient.setEditable(true);
+            }else
+            {
+                textNumVoieClient.setEditable(false);
+            }
+        }else
+        {
+           if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ||evt.getExtendedKeyCode()==KeyEvent.VK_TAB) 
+           {
+               textNumVoieClient.setEditable(true);
+           }else
+           {
+               textNumVoieClient.setEditable(false);
+           }
+        }
+        
+    }//GEN-LAST:event_textNumVoieClientKeyPressed
+
+    private void textMdpClientKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMdpClientKeyPressed
+        // TODO add your handling code here:
+        
+        String mdp=textMdpClient.getText();
+        
+        int tailleMdp=mdp.length();
+        
+            if(tailleMdp<12){
+                textMdpClient.setEditable(true);
+            }else
+            {
+                textMdpClient.setEditable(false);
+            }
+        
+    }//GEN-LAST:event_textMdpClientKeyPressed
+
+    private void textPrenomClientKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPrenomClientKeyPressed
+        // TODO add your handling code here:
+         String prenom=textPrenomClient.getText();
+        
+        int taillePrenom=prenom.length();
+        
+            if(taillePrenom<30){
+                textPrenomClient.setEditable(true);
+            }else
+            {
+                  if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ||evt.getExtendedKeyCode()==KeyEvent.VK_TAB) 
+           {
+               textPrenomClient.setEditable(true);
+           }else
+           {
+               textPrenomClient.setEditable(false);
+           }
+            }
+        
+    }//GEN-LAST:event_textPrenomClientKeyPressed
+
+    private void textNomClientKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textNomClientKeyPressed
+        // TODO add your handling code here:
+         String nom=textNomClient.getText();
+        
+        int tailleNom=nom.length();
+        
+        char verifNom=evt.getKeyChar();
+        
+            if(tailleNom<30){
+                
+               if((verifNom>='0') && (verifNom<='9'))
+                {
+                textNomClient.setEditable(false);
+                }else
+               {
+                   textNomClient.setEditable(true);
+               }
+               
+            }else
+            {     
+        
+           if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ||evt.getExtendedKeyCode()==KeyEvent.VK_TAB) 
+           {
+               textNomClient.setEditable(true);
+           }else
+           {
+               textNomClient.setEditable(false);
+           }
+        }
+                
+            
+        
+    }//GEN-LAST:event_textNomClientKeyPressed
+
+    private void textMailClientKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMailClientKeyPressed
+        // TODO add your handling code here:
+         String mail=textMailClient.getText();
+        
+        int tailleMail=mail.length();
+        
+            if(tailleMail<50){
+                textMailClient.setEditable(true);
+            }else
+            {
+                  if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ||evt.getExtendedKeyCode()==KeyEvent.VK_TAB) 
+           {
+               textMailClient.setEditable(true);
+           }else
+           {
+               textMailClient.setEditable(false);
+           }
+            }
+    }//GEN-LAST:event_textMailClientKeyPressed
+
+    private void textAdresseClientKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textAdresseClientKeyPressed
+        // TODO add your handling code here:
+         String adresse=textAdresseClient.getText();
+        
+        int tailleAdresse=adresse.length();
+        
+        char verifAdresse=evt.getKeyChar();
+        
+            if(tailleAdresse<50){
+                
+               if((verifAdresse>='0') && (verifAdresse<='9'))
+                {
+                textAdresseClient.setEditable(false);
+                }else
+               {
+                   textAdresseClient.setEditable(true);
+               }
+               
+            }else
+            {
+                  if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ||evt.getExtendedKeyCode()==KeyEvent.VK_TAB) 
+           {
+               textAdresseClient.setEditable(true);
+           }else
+           {
+               textAdresseClient.setEditable(false);
+           }
+            }
+        
+    }//GEN-LAST:event_textAdresseClientKeyPressed
+
+    private void textVilleClientKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textVilleClientKeyPressed
+        // TODO add your handling code here:
+         String ville=textVilleClient.getText();
+        
+        int tailleVille=ville.length();
+        
+        char verifVille=evt.getKeyChar();
+        
+            if(tailleVille<30){
+                
+               if((verifVille>='0') && (verifVille<='9'))
+                {
+                textVilleClient.setEditable(false);
+                }else
+               {
+                   textVilleClient.setEditable(true);
+               }
+               
+            }else
+            {
+                  if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ||evt.getExtendedKeyCode()==KeyEvent.VK_TAB) 
+           {
+               textVilleClient.setEditable(true);
+           }else
+           {
+               textVilleClient.setEditable(false);
+           }
+            }
+    }//GEN-LAST:event_textVilleClientKeyPressed
+
+    private void textPaysClientKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPaysClientKeyPressed
+        // TODO add your handling code here:
+        String pays=textPaysClient.getText();
+        
+        int taillePays=pays.length();
+        
+        char verifPays=evt.getKeyChar();
+        
+            if(taillePays<30){
+                
+               if((verifPays>='0') && (verifPays<='9'))
+                {
+                textPaysClient.setEditable(false);
+                }else
+               {
+                   textPaysClient.setEditable(true);
+               }
+               
+            }else
+            {
+                  if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ||evt.getExtendedKeyCode()==KeyEvent.VK_TAB) 
+           {
+               textPaysClient.setEditable(true);
+           }else
+           {
+               textPaysClient.setEditable(false);
+           }
+            }
+    }//GEN-LAST:event_textPaysClientKeyPressed
+
+    
     
     //afficher la liste de tous les clients de la base de données
     public void afficherListeClients(ArrayList<Client> listeClients) {

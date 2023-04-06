@@ -181,46 +181,55 @@
         <Component class="javax.swing.JTextField" name="textNomClient">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textNomClientActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textNomClientKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="textPrenomClient">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textPrenomClientActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textPrenomClientKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="textTelClient">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textTelClientActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textTelClientKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="textMailClient">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textMailClientActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textMailClientKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="textNumVoieClient">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textNumVoieClientActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textNumVoieClientKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="textAdresseClient">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textAdresseClientActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textAdresseClientKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="textVilleClient">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textVilleClientActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textVilleClientKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="textPaysClient">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textPaysClientActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textPaysClientKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="textMdpClient">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textMdpClientActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="textMdpClientKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">

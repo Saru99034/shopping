@@ -6,6 +6,7 @@ package Fenetre;
 
 import Connexion.*;
 import java.awt.HeadlessException;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -100,6 +101,11 @@ public class PageCreationCompteEmploye extends javax.swing.JFrame {
                 textNomEmployeActionPerformed(evt);
             }
         });
+        textNomEmploye.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textNomEmployeKeyPressed(evt);
+            }
+        });
 
         jLabel3.setText("Votre prénom :");
 
@@ -108,16 +114,32 @@ public class PageCreationCompteEmploye extends javax.swing.JFrame {
                 textPrenomEmployeActionPerformed(evt);
             }
         });
+        textPrenomEmploye.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textPrenomEmployeKeyPressed(evt);
+            }
+        });
 
         jLabel4.setText("Sexe :");
 
         jLabel5.setText("Votre numéro de téléphone : ");
+
+        textTelEmploye.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textTelEmployeKeyPressed(evt);
+            }
+        });
 
         jLabel6.setText("Votre numéro de voie :");
 
         textNumVoieEmploye.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textNumVoieEmployeActionPerformed(evt);
+            }
+        });
+        textNumVoieEmploye.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textNumVoieEmployeKeyPressed(evt);
             }
         });
 
@@ -128,12 +150,22 @@ public class PageCreationCompteEmploye extends javax.swing.JFrame {
                 textAdresseEmployeActionPerformed(evt);
             }
         });
+        textAdresseEmploye.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textAdresseEmployeKeyPressed(evt);
+            }
+        });
 
         jLabel8.setText("Votre ville :");
 
         textVilleEmploye.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textVilleEmployeActionPerformed(evt);
+            }
+        });
+        textVilleEmploye.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textVilleEmployeKeyPressed(evt);
             }
         });
 
@@ -144,6 +176,11 @@ public class PageCreationCompteEmploye extends javax.swing.JFrame {
                 textPaysEmployeActionPerformed(evt);
             }
         });
+        textPaysEmploye.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textPaysEmployeKeyPressed(evt);
+            }
+        });
 
         jLabel10.setText("Votre adresse mail :");
 
@@ -152,12 +189,22 @@ public class PageCreationCompteEmploye extends javax.swing.JFrame {
                 textMailEmployeActionPerformed(evt);
             }
         });
+        textMailEmploye.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textMailEmployeKeyPressed(evt);
+            }
+        });
 
         jLabel11.setText("Votre mot de passe :");
 
         textMdpEmploye.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textMdpEmployeActionPerformed(evt);
+            }
+        });
+        textMdpEmploye.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textMdpEmployeKeyPressed(evt);
             }
         });
 
@@ -378,6 +425,240 @@ public class PageCreationCompteEmploye extends javax.swing.JFrame {
         PageConnexionEmploye coEmploye=new PageConnexionEmploye();
         coEmploye.setVisible(true);
     }//GEN-LAST:event_buttonRetourCoEmployeActionPerformed
+
+    private void textNomEmployeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textNomEmployeKeyPressed
+        // TODO add your handling code here:
+          String nom=textNomEmploye.getText();
+        
+        int tailleNom=nom.length();
+        
+        char verifNom=evt.getKeyChar();
+        
+            if(tailleNom<30){
+                
+               if((verifNom>='0') && (verifNom<='9'))
+                {
+                textNomEmploye.setEditable(false);
+                }else
+               {
+                   textNomEmploye.setEditable(true);
+               }
+               
+            }else
+            {     
+        
+           if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ||evt.getExtendedKeyCode()==KeyEvent.VK_TAB) 
+           {
+               textNomEmploye.setEditable(true);
+           }else
+           {
+               textNomEmploye.setEditable(false);
+           }
+        }
+             
+    }//GEN-LAST:event_textNomEmployeKeyPressed
+
+    private void textPrenomEmployeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPrenomEmployeKeyPressed
+        // TODO add your handling code here:
+         String prenom=textPrenomEmploye.getText();
+        
+        int taillePrenom=prenom.length();
+        
+            if(taillePrenom<30){
+                textPrenomEmploye.setEditable(true);
+            }else
+            {
+                  if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ||evt.getExtendedKeyCode()==KeyEvent.VK_TAB) 
+           {
+               textPrenomEmploye.setEditable(true);
+           }else
+           {
+               textPrenomEmploye.setEditable(false);
+           }
+            }
+    }//GEN-LAST:event_textPrenomEmployeKeyPressed
+
+    private void textTelEmployeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textTelEmployeKeyPressed
+        // TODO add your handling code here:
+         String numTel=textTelEmploye.getText();
+        
+        int tailleNumTel=numTel.length();
+        
+        char verifNum=evt.getKeyChar();
+        
+        if((verifNum>='0') && (verifNum<='9'))
+        {
+            if(tailleNumTel<10){
+                textTelEmploye.setEditable(true);
+            }else
+            {
+                textTelEmploye.setEditable(false);
+            }
+        }else
+        {
+           if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ||evt.getExtendedKeyCode()==KeyEvent.VK_TAB) 
+           {
+               textTelEmploye.setEditable(true);
+           }else
+           {
+               textTelEmploye.setEditable(false);
+           }
+        }
+    }//GEN-LAST:event_textTelEmployeKeyPressed
+
+    private void textMailEmployeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMailEmployeKeyPressed
+        // TODO add your handling code here:
+        String mail=textMailEmploye.getText();
+        
+        int tailleMail=mail.length();
+        
+            if(tailleMail<50){
+                textMailEmploye.setEditable(true);
+            }else
+            {
+                  if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ||evt.getExtendedKeyCode()==KeyEvent.VK_TAB) 
+           {
+               textMailEmploye.setEditable(true);
+           }else
+           {
+               textMailEmploye.setEditable(false);
+           }
+            }
+        
+    }//GEN-LAST:event_textMailEmployeKeyPressed
+
+    private void textNumVoieEmployeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textNumVoieEmployeKeyPressed
+        // TODO add your handling code here:
+        String numVoie=textNumVoieEmploye.getText();
+        
+        int tailleNumVoie=numVoie.length();
+        
+        char verifNumVoie=evt.getKeyChar();
+        
+        if((verifNumVoie>='0') && (verifNumVoie<='9'))
+        {
+            if(tailleNumVoie<4){
+                textNumVoieEmploye.setEditable(true);
+            }else
+            {
+                textNumVoieEmploye.setEditable(false);
+            }
+        }else
+        {
+           if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ||evt.getExtendedKeyCode()==KeyEvent.VK_TAB) 
+           {
+               textNumVoieEmploye.setEditable(true);
+           }else
+           {
+               textNumVoieEmploye.setEditable(false);
+           }
+        }
+    }//GEN-LAST:event_textNumVoieEmployeKeyPressed
+
+    private void textAdresseEmployeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textAdresseEmployeKeyPressed
+        // TODO add your handling code here:
+         String adresse=textAdresseEmploye.getText();
+        
+        int tailleAdresse=adresse.length();
+        
+        char verifAdresse=evt.getKeyChar();
+        
+            if(tailleAdresse<50){
+                
+               if((verifAdresse>='0') && (verifAdresse<='9'))
+                {
+                textAdresseEmploye.setEditable(false);
+                }else
+               {
+                   textAdresseEmploye.setEditable(true);
+               }
+               
+            }else
+            {
+                  if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ||evt.getExtendedKeyCode()==KeyEvent.VK_TAB) 
+           {
+               textAdresseEmploye.setEditable(true);
+           }else
+           {
+               textAdresseEmploye.setEditable(false);
+           }
+            }
+        
+    }//GEN-LAST:event_textAdresseEmployeKeyPressed
+
+    private void textVilleEmployeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textVilleEmployeKeyPressed
+        // TODO add your handling code here:
+        String ville=textVilleEmploye.getText();
+        
+        int tailleVille=ville.length();
+        
+        char verifVille=evt.getKeyChar();
+        
+            if(tailleVille<30){
+                
+               if((verifVille>='0') && (verifVille<='9'))
+                {
+                textVilleEmploye.setEditable(false);
+                }else
+               {
+                   textVilleEmploye.setEditable(true);
+               }
+               
+            }else
+            {
+                  if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ||evt.getExtendedKeyCode()==KeyEvent.VK_TAB) 
+           {
+               textVilleEmploye.setEditable(true);
+           }else
+           {
+               textVilleEmploye.setEditable(false);
+           }
+            }
+    }//GEN-LAST:event_textVilleEmployeKeyPressed
+
+    private void textPaysEmployeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textPaysEmployeKeyPressed
+        // TODO add your handling code here:
+         String pays=textPaysEmploye.getText();
+        
+        int taillePays=pays.length();
+        
+        char verifPays=evt.getKeyChar();
+        
+            if(taillePays<30){
+                
+               if((verifPays>='0') && (verifPays<='9'))
+                {
+                textPaysEmploye.setEditable(false);
+                }else
+               {
+                   textPaysEmploye.setEditable(true);
+               }
+               
+            }else
+            {
+                  if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ||evt.getExtendedKeyCode()==KeyEvent.VK_TAB) 
+           {
+               textPaysEmploye.setEditable(true);
+           }else
+           {
+               textPaysEmploye.setEditable(false);
+           }
+            }
+    }//GEN-LAST:event_textPaysEmployeKeyPressed
+
+    private void textMdpEmployeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMdpEmployeKeyPressed
+        // TODO add your handling code here:
+          String mdp=textMdpEmploye.getText();
+        
+        int tailleMdp=mdp.length();
+        
+            if(tailleMdp<12){
+                textMdpEmploye.setEditable(true);
+            }else
+            {
+                textMdpEmploye.setEditable(false);
+            }
+    }//GEN-LAST:event_textMdpEmployeKeyPressed
 
     /**
      * @param args the command line arguments
