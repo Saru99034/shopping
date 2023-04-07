@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -64,19 +65,18 @@ public class PageConnexionClient extends javax.swing.JFrame {
         PasswordClient = new javax.swing.JPasswordField();
         jButtonConnexionClient = new javax.swing.JButton();
         jButtonCreerCompteClient = new javax.swing.JButton();
-        buttonRetourHome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("PAGE DE CONNEXION CLIENT");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel3.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel1.setFont(new java.awt.Font("Sitka Small", 1, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("BIENVENUE");
+
+        jLabel3.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Adresse Mail");
+        jLabel3.setText("ADRESSE MAIL");
 
         textAdresseMailClient.setForeground(new java.awt.Color(153, 153, 153));
         textAdresseMailClient.addActionListener(new java.awt.event.ActionListener() {
@@ -85,8 +85,7 @@ public class PageConnexionClient extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Showcard Gothic", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 51, 204));
+        jLabel4.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("MOT DE PASSE");
 
@@ -96,6 +95,9 @@ public class PageConnexionClient extends javax.swing.JFrame {
             }
         });
 
+        jButtonConnexionClient.setBackground(new java.awt.Color(0, 0, 0));
+        jButtonConnexionClient.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        jButtonConnexionClient.setForeground(new java.awt.Color(255, 255, 255));
         jButtonConnexionClient.setText("Se connecter");
         jButtonConnexionClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,17 +105,13 @@ public class PageConnexionClient extends javax.swing.JFrame {
             }
         });
 
-        jButtonCreerCompteClient.setText("Créer un compte");
+        jButtonCreerCompteClient.setBackground(new java.awt.Color(0, 0, 0));
+        jButtonCreerCompteClient.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
+        jButtonCreerCompteClient.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonCreerCompteClient.setText("Je n'ai pas de compte\n");
         jButtonCreerCompteClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCreerCompteClientActionPerformed(evt);
-            }
-        });
-
-        buttonRetourHome.setText("Retour");
-        buttonRetourHome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRetourHomeActionPerformed(evt);
             }
         });
 
@@ -127,46 +125,46 @@ public class PageConnexionClient extends javax.swing.JFrame {
                         .addGap(41, 41, 41)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addComponent(textAdresseMailClient, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(146, 146, 146)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(PasswordClient, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(146, 146, 146)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(buttonRetourHome)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonConnexionClient)
-                .addGap(100, 100, 100)
-                .addComponent(jButtonCreerCompteClient)
-                .addGap(15, 15, 15))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButtonCreerCompteClient, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                    .addComponent(jButtonConnexionClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(154, 154, 154))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(textAdresseMailClient, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(148, 148, 148))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(PasswordClient, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(180, 180, 180))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(110, 110, 110)
+                .addGap(49, 49, 49)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textAdresseMailClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PasswordClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonConnexionClient)
-                    .addComponent(jButtonCreerCompteClient)
-                    .addComponent(buttonRetourHome))
-                .addGap(23, 23, 23))
+                .addGap(32, 32, 32)
+                .addComponent(jButtonConnexionClient)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonCreerCompteClient)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -222,14 +220,9 @@ public class PageConnexionClient extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         Fenetre me=new Fenetre();
+        me.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //permet de fermer que cette page
         me.setVisible(true);  // aller sur la fênetre création de compte client
     }//GEN-LAST:event_jButtonCreerCompteClientActionPerformed
-
-    private void buttonRetourHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRetourHomeActionPerformed
-        // TODO add your handling code here:
-        PageClientOuEmploye home=new PageClientOuEmploye();
-        home.setVisible(true);
-    }//GEN-LAST:event_buttonRetourHomeActionPerformed
 
     
     /**
@@ -269,7 +262,6 @@ public class PageConnexionClient extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField PasswordClient;
-    private javax.swing.JButton buttonRetourHome;
     private javax.swing.JButton jButtonConnexionClient;
     private javax.swing.JButton jButtonCreerCompteClient;
     private javax.swing.JLabel jLabel1;
