@@ -497,7 +497,13 @@ public class Fenetre extends javax.swing.JFrame {
                 textMdpClient.setEditable(true);
             }else
             {
-                textMdpClient.setEditable(false);
+            if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ||evt.getExtendedKeyCode()==KeyEvent.VK_TAB) 
+           {
+               textMdpClient.setEditable(true);
+           }else
+           {
+               textMdpClient.setEditable(false);
+           }
             }
         
     }//GEN-LAST:event_textMdpClientKeyPressed

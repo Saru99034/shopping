@@ -656,7 +656,13 @@ public class PageCreationCompteEmploye extends javax.swing.JFrame {
                 textMdpEmploye.setEditable(true);
             }else
             {
-                textMdpEmploye.setEditable(false);
+                 if(evt.getExtendedKeyCode()==KeyEvent.VK_BACK_SPACE || evt.getExtendedKeyCode()==KeyEvent.VK_DELETE ||evt.getExtendedKeyCode()==KeyEvent.VK_TAB) 
+           {
+               textMdpEmploye.setEditable(true);
+           }else
+           {
+               textMdpEmploye.setEditable(false);
+           }
             }
     }//GEN-LAST:event_textMdpEmployeKeyPressed
 
