@@ -196,9 +196,11 @@ public class PageConnexionEmploye extends javax.swing.JFrame {
           ///les conditions de connexion
           if(rs.next())  // si le client s'est bien connecté
           {
+              PageConnexionEmploye.super.dispose();
               String messageTempo1="Bienvenue "+textAdresseMailEmploye.getText();
               JOptionPane.showMessageDialog(null,messageTempo1);
-              
+              Home coPageEmploye=new Home(textAdresseMailEmploye.getText());
+              coPageEmploye.setVisible(true);
           }else
           {
               JOptionPane.showMessageDialog(null,"Erreur de saisie: Recommencez svp");

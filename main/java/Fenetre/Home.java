@@ -7,6 +7,13 @@ package Fenetre;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*; // pour ActionEvent et ActionListener
+import static java.lang.Thread.sleep;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 /**
  *
  * @author USER
@@ -18,7 +25,243 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        dateHeure();
+        textBienvenue.setVisible(false);
+        textNom.setVisible(false);
+        textPrenom.setVisible(false);
+        buttonDeco.setVisible(false);
     }
+    
+    public Home(String adresseMail)
+    {
+        initComponents();
+        dateHeure();
+        textBienvenue.setVisible(false);
+        textNom.setVisible(false);
+        textPrenom.setVisible(false);
+        buttonDeco.setVisible(false);
+        this.mailAdress=adresseMail;
+        nomClient();
+        prenomClient();
+        nomEmploye();
+        prenomEmploye();
+    }
+    
+    
+   
+    
+     //accesseur de l'adresse mail client
+    public String getMailAdress()
+    {
+        return this.mailAdress;
+    }
+    
+    Connection con;
+    PreparedStatement pst;
+    ResultSet rs;
+    
+    public void connexionClient()
+    {
+        try{
+            //maconnexion= new Connexion("shopping","root","");
+          Class.forName("com.mysql.cj.jdbc.Driver");
+        
+        //nameDatabase="shopping";  //nom de la database sur wampserveur
+        String urlDatabase="jdbc:mysql://localhost:3306/shopping";
+        
+        //création d'une connexion JDBC à la base 
+          con=DriverManager.getConnection(urlDatabase,"root","");
+        }catch(Exception e)
+        {
+               e.printStackTrace();
+        }
+    }
+    
+    // sous programme pour avoir la date actuelle et l'heure actuelle
+     public void dateHeure()
+    {
+        Thread tr=new Thread(){
+            @Override
+            public void run()
+            {
+                for(;;)
+                {
+                    try{
+                        Calendar calendrier=new GregorianCalendar();
+                        
+                        int annee=calendrier.get(Calendar.YEAR);
+                        int mois=calendrier.get(Calendar.MONTH);
+                        int jour=calendrier.get(Calendar.DAY_OF_MONTH);
+                        
+                        
+                        int heure=calendrier.get(Calendar.HOUR_OF_DAY);
+                        int minute=calendrier.get(Calendar.MINUTE);
+                        int seconde=calendrier.get(Calendar.SECOND);
+                        
+                        mois=mois+1;
+                        textDate.setText(jour+"/"+mois+"/"+annee);
+                        textHeure.setText(heure+":"+minute+":"+seconde);
+                        sleep(1000);
+                        
+                    }catch(Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            
+        };
+        tr.start();
+        
+    }
+     
+     
+     
+     public void nomClient()
+    {
+        Thread tr=new Thread(){
+            @Override
+            public void run()
+            {
+                for(;;)
+                {
+                      try{
+            connexionClient();
+            String requeteSelectNom="SELECT client_nom FROM client WHERE client_mail=?";
+            pst=con.prepareStatement(requeteSelectNom);
+            pst.setString(1, getMailAdress());
+            rs=pst.executeQuery();
+
+            while(rs.next())
+            {
+                textNom.setText(rs.getString("client_nom").toUpperCase());
+                textBienvenue.setVisible(true);
+                textNom.setVisible(true);
+               // textNomClientBis.setEditable(false);
+            }
+            con.close();
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+                }
+            }
+            
+        };
+        tr.start();
+        
+    }
+     
+     
+       public void prenomClient()
+    {
+        Thread tr=new Thread(){
+            @Override
+            public void run()
+            {
+                for(;;)
+                {
+                      try{
+            connexionClient();
+            String requeteSelectPrenom="SELECT client_prenom FROM client WHERE client_mail=?";
+            pst=con.prepareStatement(requeteSelectPrenom);
+            pst.setString(1, getMailAdress());
+            rs=pst.executeQuery();
+
+            while(rs.next())
+            {
+                textPrenom.setText(rs.getString("client_prenom"));
+                textPrenom.setVisible(true);
+                buttonDeco.setVisible(true);
+               // textNomClientBis.setEditable(false);
+            }
+            con.close();
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+                }
+            }
+            
+        };
+        tr.start();
+        
+    }
+       
+       
+    
+    public void nomEmploye()
+    {
+        Thread tr=new Thread(){
+            @Override
+            public void run()
+            {
+                for(;;)
+                {
+                      try{
+            connexionClient();
+            String requeteSelectNom="SELECT employe_nom FROM employe WHERE employe_mail=?";
+            pst=con.prepareStatement(requeteSelectNom);
+            pst.setString(1, getMailAdress());
+            rs=pst.executeQuery();
+
+            while(rs.next())
+            {
+                textNom.setText(rs.getString("employe_nom").toUpperCase());
+                textBienvenue.setVisible(true);
+                textNom.setVisible(true);
+               // textNomClientBis.setEditable(false);
+            }
+            con.close();
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+                }
+            }
+            
+        };
+        tr.start();
+        
+    }
+    
+    
+    
+     public void prenomEmploye()
+    {
+        Thread tr=new Thread(){
+            @Override
+            public void run()
+            {
+                for(;;)
+                {
+                      try{
+            connexionClient();
+            String requeteSelectPrenom="SELECT employe_prenom FROM employe WHERE employe_mail=?";
+            pst=con.prepareStatement(requeteSelectPrenom);
+            pst.setString(1, getMailAdress());
+            rs=pst.executeQuery();
+
+            while(rs.next())
+            {
+                textPrenom.setText(rs.getString("employe_prenom"));
+                textPrenom.setVisible(true);
+                buttonDeco.setVisible(true);
+               // textNomClientBis.setEditable(false);
+            }
+            con.close();
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+                }
+            }
+            
+        };
+        tr.start();
+        
+    }
+     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,6 +299,7 @@ public class Home extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        buttonDeco = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -67,6 +311,11 @@ public class Home extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
+        textDate = new javax.swing.JLabel();
+        textHeure = new javax.swing.JLabel();
+        textBienvenue = new javax.swing.JLabel();
+        textNom = new javax.swing.JLabel();
+        textPrenom = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -75,11 +324,7 @@ public class Home extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\image\\pentalon.jpg")); // NOI18N
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\image\\veste.jpg")); // NOI18N
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\image\\sac.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\33768\\OneDrive\\Documents\\NetBeansProjects\\projet_shopping\\image\\pentalon.jpg")); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel4.setText("Miu Miu");
@@ -108,7 +353,6 @@ public class Home extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
         jLabel12.setText("1000€");
 
-        jButton1.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\image\\iconeCad.png")); // NOI18N
         jButton1.setContentAreaFilled(false);
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -121,7 +365,6 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\image\\iconeCad.png")); // NOI18N
         jButton2.setContentAreaFilled(false);
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -129,15 +372,12 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\image\\iconeCad.png")); // NOI18N
         jButton3.setContentAreaFilled(false);
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
             }
         });
-
-        jLabel13.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\image\\lunette.jpg")); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel14.setText("The Atico");
@@ -148,15 +388,12 @@ public class Home extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
         jLabel16.setText("1000€");
 
-        jButton4.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\image\\iconeCad.png")); // NOI18N
         jButton4.setContentAreaFilled(false);
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton4MouseClicked(evt);
             }
         });
-
-        jLabel17.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\image\\bonnet.jpg")); // NOI18N
 
         jLabel18.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel18.setText("Ganni");
@@ -167,11 +404,17 @@ public class Home extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
         jLabel20.setText("1000€");
 
-        jButton5.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\image\\iconeCad.png")); // NOI18N
         jButton5.setContentAreaFilled(false);
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton5MouseClicked(evt);
+            }
+        });
+
+        buttonDeco.setText("SE DECONNECTER");
+        buttonDeco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDecoActionPerformed(evt);
             }
         });
 
@@ -223,21 +466,25 @@ public class Home extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(68, 68, 68)
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel18)
                         .addGap(119, 119, 119))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel20)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                                 .addComponent(jButton5))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(72, 72, 72))))
+                        .addGap(72, 72, 72))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(buttonDeco, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,13 +538,14 @@ public class Home extends javax.swing.JFrame {
                                     .addComponent(jLabel20)))
                             .addComponent(jButton5)))
                     .addComponent(jButton2))
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(buttonDeco)
+                .addContainerGap(223, Short.MAX_VALUE))
         );
 
         jLabel21.setFont(new java.awt.Font("Sitka Small", 1, 36)); // NOI18N
         jLabel21.setText("BOUTIQUE");
 
-        jButton6.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\image\\iconSac.png")); // NOI18N
         jButton6.setContentAreaFilled(false);
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -305,7 +553,6 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\image\\iconUtilisateur.png")); // NOI18N
         jButton7.setContentAreaFilled(false);
         jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -318,7 +565,6 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton9.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\image\\IconAdmin.png")); // NOI18N
         jButton9.setContentAreaFilled(false);
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -379,27 +625,43 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        textDate.setText("DATE");
+
+        textHeure.setText("HEURE");
+
+        textBienvenue.setText("Bienvenue");
+
+        textNom.setText("CHERS");
+
+        textPrenom.setText("CLIENTS");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel21)
-                        .addGap(387, 387, 387)
-                        .addComponent(jButton9)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton7)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton6)
-                        .addGap(32, 32, 32))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jButton8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(textHeure, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(textBienvenue)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textNom)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(textPrenom)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(textDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jButton14)
                         .addGap(18, 18, 18)
@@ -410,16 +672,37 @@ public class Home extends javax.swing.JFrame {
                         .addComponent(jButton12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41))))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(41, 41, 41))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(293, 293, 293)
+                        .addComponent(jLabel21)
+                        .addGap(387, 387, 387)
+                        .addComponent(jButton9)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton7)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton6)
+                        .addGap(32, 32, 32))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel21)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jLabel21))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(textDate)
+                                    .addComponent(textHeure))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(textBienvenue)
+                                    .addComponent(textNom)
+                                    .addComponent(textPrenom))))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton8)
@@ -450,12 +733,13 @@ public class Home extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -542,6 +826,15 @@ public class Home extends javax.swing.JFrame {
     page.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void buttonDecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDecoActionPerformed
+        // TODO add your handling code here:
+        Home.super.dispose();
+        connexionClient();
+        
+        Home homepage=new Home();
+        homepage.setVisible(true);
+    }//GEN-LAST:event_buttonDecoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -578,6 +871,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonDeco;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -616,5 +910,11 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel textBienvenue;
+    private javax.swing.JLabel textDate;
+    private javax.swing.JLabel textHeure;
+    private javax.swing.JLabel textNom;
+    private javax.swing.JLabel textPrenom;
     // End of variables declaration//GEN-END:variables
+    private String mailAdress;
 }

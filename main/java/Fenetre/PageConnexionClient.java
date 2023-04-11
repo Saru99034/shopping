@@ -199,6 +199,11 @@ public class PageConnexionClient extends javax.swing.JFrame {
           {
               String messageTempo1="Bienvenue "+textAdresseMailClient.getText();
               JOptionPane.showMessageDialog(null,messageTempo1);
+              PageConnexionClient.super.dispose();
+              Home coPageClient=new Home(textAdresseMailClient.getText());
+              coPageClient.setVisible(true);
+             /* PageHomeConnecteClient coPageClient=new PageHomeConnecteClient(textAdresseMailClient.getText());
+              coPageClient.setVisible(true);*/
               
           }else
           {

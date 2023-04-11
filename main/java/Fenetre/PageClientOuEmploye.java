@@ -101,11 +101,13 @@ public class PageClientOuEmploye extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void clicCoClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clicCoClientActionPerformed
+        PageClientOuEmploye.super.dispose();
         PageConnexionClient coClient=new PageConnexionClient();
         coClient.setVisible(true);
     }//GEN-LAST:event_clicCoClientActionPerformed
 
     private void clicCoEmployeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clicCoEmployeActionPerformed
+        PageClientOuEmploye.super.dispose();
         PageConnexionEmploye coEmploye=new PageConnexionEmploye();
         coEmploye.setVisible(true);
     }//GEN-LAST:event_clicCoEmployeActionPerformed
