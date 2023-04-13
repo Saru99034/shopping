@@ -27,6 +27,23 @@ public class Fenetre extends javax.swing.JFrame {
     PreparedStatement pst;
     ResultSet rs;
     
+    public void connexion()
+    {
+        try{
+            //maconnexion= new Connexion("shopping","root","");
+          Class.forName("com.mysql.cj.jdbc.Driver");
+        
+        //nameDatabase="shopping";  //nom de la database sur wampserveur
+        String urlDatabase="jdbc:mysql://localhost:3306/shopping";
+        
+        //création d'une connexion JDBC à la base 
+          con=DriverManager.getConnection(urlDatabase,"root","");
+        }catch(Exception e)
+        {
+               e.printStackTrace();
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -354,6 +371,7 @@ public class Fenetre extends javax.swing.JFrame {
     //enregistrer dans la database
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
+          connexion();  
           String dataNomClient=textNomClient.getText().toUpperCase();  
           String dataPrenomClient=textPrenomClient.getText().toUpperCase(); 
           String dataTelClient=textTelClient.getText(); 
@@ -366,13 +384,14 @@ public class Fenetre extends javax.swing.JFrame {
           
           
           //maconnexion= new Connexion("shopping","root","");
-          Class.forName("com.mysql.cj.jdbc.Driver");
+          
+          //Class.forName("com.mysql.cj.jdbc.Driver");
         
-        //nameDatabase="shopping";  //nom de la database sur wampserveur
-        String urlDatabase="jdbc:mysql://localhost:3306/shopping";
+        
+        //String urlDatabase="jdbc:mysql://localhost:3306/shopping";
         
         //création d'une connexion JDBC à la base 
-          con=DriverManager.getConnection(urlDatabase,"root","");
+          //con=DriverManager.getConnection(urlDatabase,"root","");
       
           
           String requeteInsertionClient="INSERT INTO client(id_client,client_nom,client_prenom,client_tel,client_mail,client_num_voie,client_adresse,client_ville,client_pays,client_mdp) VALUES(NULL,?,?,?,?,?,?,?,?,?)";

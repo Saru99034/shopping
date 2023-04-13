@@ -5,21 +5,14 @@
 package Controleur;
 
 import Fenetre.*;
-
 /**
  *
  * @author 33768
  */
 public class Controleur {
     
-     /**
-     *
-     * une methode principal (main) pour lancer l'application
-     *
-     * @param s
-     */
-    public static void main(String[] s) {
-        // creation de la fenetre
-        Fenetre f = new Fenetre();
+    public static void main(String[] args) {
+        Fenetre fe=new Fenetre();
+        fe.setVisible(true);
     }
 }

@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
 /**
  *
  * @author USER
@@ -31,237 +32,197 @@ public class Home extends javax.swing.JFrame {
         textPrenom.setVisible(false);
         buttonDeco.setVisible(false);
     }
-    
-    public Home(String adresseMail)
-    {
+
+    public Home(String adresseMail) {
         initComponents();
         dateHeure();
         textBienvenue.setVisible(false);
         textNom.setVisible(false);
         textPrenom.setVisible(false);
         buttonDeco.setVisible(false);
-        this.mailAdress=adresseMail;
+        this.mailAdress = adresseMail;
         nomClient();
         prenomClient();
         nomEmploye();
         prenomEmploye();
     }
-    
-    
-   
-    
-     //accesseur de l'adresse mail client
-    public String getMailAdress()
-    {
+
+    //accesseur de l'adresse mail client
+    public String getMailAdress() {
         return this.mailAdress;
     }
-    
+
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
-    
-    public void connexionClient()
-    {
-        try{
+
+    public void connexion() {
+        try {
             //maconnexion= new Connexion("shopping","root","");
-          Class.forName("com.mysql.cj.jdbc.Driver");
-        
-        //nameDatabase="shopping";  //nom de la database sur wampserveur
-        String urlDatabase="jdbc:mysql://localhost:3306/shopping";
-        
-        //création d'une connexion JDBC à la base 
-          con=DriverManager.getConnection(urlDatabase,"root","");
-        }catch(Exception e)
-        {
-               e.printStackTrace();
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            //nameDatabase="shopping";  //nom de la database sur wampserveur
+            String urlDatabase = "jdbc:mysql://localhost:3306/shopping";
+
+            //création d'une connexion JDBC à la base 
+            con = DriverManager.getConnection(urlDatabase, "root", "");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
-    
+
     // sous programme pour avoir la date actuelle et l'heure actuelle
-     public void dateHeure()
-    {
-        Thread tr=new Thread(){
+    public void dateHeure() {
+        Thread tr = new Thread() {
             @Override
-            public void run()
-            {
-                for(;;)
-                {
-                    try{
-                        Calendar calendrier=new GregorianCalendar();
-                        
-                        int annee=calendrier.get(Calendar.YEAR);
-                        int mois=calendrier.get(Calendar.MONTH);
-                        int jour=calendrier.get(Calendar.DAY_OF_MONTH);
-                        
-                        
-                        int heure=calendrier.get(Calendar.HOUR_OF_DAY);
-                        int minute=calendrier.get(Calendar.MINUTE);
-                        int seconde=calendrier.get(Calendar.SECOND);
-                        
-                        mois=mois+1;
-                        textDate.setText(jour+"/"+mois+"/"+annee);
-                        textHeure.setText(heure+":"+minute+":"+seconde);
+            public void run() {
+                for (;;) {
+                    try {
+                        Calendar calendrier = new GregorianCalendar();
+
+                        int annee = calendrier.get(Calendar.YEAR);
+                        int mois = calendrier.get(Calendar.MONTH);
+                        int jour = calendrier.get(Calendar.DAY_OF_MONTH);
+
+                        int heure = calendrier.get(Calendar.HOUR_OF_DAY);
+                        int minute = calendrier.get(Calendar.MINUTE);
+                        int seconde = calendrier.get(Calendar.SECOND);
+
+                        mois = mois + 1;
+                        textDate.setText(jour + "/" + mois + "/" + annee);
+                        textHeure.setText(heure + ":" + minute + ":" + seconde);
                         sleep(1000);
-                        
-                    }catch(Exception e)
-                    {
+
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
             }
-            
+
         };
         tr.start();
-        
-    }
-     
-     
-     
-     public void nomClient()
-    {
-        Thread tr=new Thread(){
-            @Override
-            public void run()
-            {
-                for(;;)
-                {
-                      try{
-            connexionClient();
-            String requeteSelectNom="SELECT client_nom FROM client WHERE client_mail=?";
-            pst=con.prepareStatement(requeteSelectNom);
-            pst.setString(1, getMailAdress());
-            rs=pst.executeQuery();
 
-            while(rs.next())
-            {
-                textNom.setText(rs.getString("client_nom").toUpperCase());
-                textBienvenue.setVisible(true);
-                textNom.setVisible(true);
-               // textNomClientBis.setEditable(false);
-            }
-            con.close();
-        }catch(Exception e)
-        {
-            e.printStackTrace();
-        }
+    }
+
+    public void nomClient() {
+        Thread tr = new Thread() {
+            @Override
+            public void run() {
+                for (;;) {
+                    try {
+                        connexion();
+                        String requeteSelectNom = "SELECT client_nom FROM client WHERE client_mail=?";
+                        pst = con.prepareStatement(requeteSelectNom);
+                        pst.setString(1, getMailAdress());
+                        rs = pst.executeQuery();
+
+                        while (rs.next()) {
+                            textNom.setText(rs.getString("client_nom").toUpperCase());
+                            textBienvenue.setVisible(true);
+                            textNom.setVisible(true);
+                            // textNomClientBis.setEditable(false);
+                        }
+                        con.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
-            
+
         };
         tr.start();
-        
-    }
-     
-     
-       public void prenomClient()
-    {
-        Thread tr=new Thread(){
-            @Override
-            public void run()
-            {
-                for(;;)
-                {
-                      try{
-            connexionClient();
-            String requeteSelectPrenom="SELECT client_prenom FROM client WHERE client_mail=?";
-            pst=con.prepareStatement(requeteSelectPrenom);
-            pst.setString(1, getMailAdress());
-            rs=pst.executeQuery();
 
-            while(rs.next())
-            {
-                textPrenom.setText(rs.getString("client_prenom"));
-                textPrenom.setVisible(true);
-                buttonDeco.setVisible(true);
-               // textNomClientBis.setEditable(false);
-            }
-            con.close();
-        }catch(Exception e)
-        {
-            e.printStackTrace();
-        }
+    }
+
+    public void prenomClient() {
+        Thread tr = new Thread() {
+            @Override
+            public void run() {
+                for (;;) {
+                    try {
+                        connexion();
+                        String requeteSelectPrenom = "SELECT client_prenom FROM client WHERE client_mail=?";
+                        pst = con.prepareStatement(requeteSelectPrenom);
+                        pst.setString(1, getMailAdress());
+                        rs = pst.executeQuery();
+
+                        while (rs.next()) {
+                            textPrenom.setText(rs.getString("client_prenom"));
+                            textPrenom.setVisible(true);
+                            buttonDeco.setVisible(true);
+                            // textNomClientBis.setEditable(false);
+                        }
+                        con.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
-            
+
         };
         tr.start();
-        
-    }
-       
-       
-    
-    public void nomEmploye()
-    {
-        Thread tr=new Thread(){
-            @Override
-            public void run()
-            {
-                for(;;)
-                {
-                      try{
-            connexionClient();
-            String requeteSelectNom="SELECT employe_nom FROM employe WHERE employe_mail=?";
-            pst=con.prepareStatement(requeteSelectNom);
-            pst.setString(1, getMailAdress());
-            rs=pst.executeQuery();
 
-            while(rs.next())
-            {
-                textNom.setText(rs.getString("employe_nom").toUpperCase());
-                textBienvenue.setVisible(true);
-                textNom.setVisible(true);
-               // textNomClientBis.setEditable(false);
-            }
-            con.close();
-        }catch(Exception e)
-        {
-            e.printStackTrace();
-        }
+    }
+
+    public void nomEmploye() {
+        Thread tr = new Thread() {
+            @Override
+            public void run() {
+                for (;;) {
+                    try {
+                        connexion();
+                        String requeteSelectNom = "SELECT employe_nom FROM employe WHERE employe_mail=?";
+                        pst = con.prepareStatement(requeteSelectNom);
+                        pst.setString(1, getMailAdress());
+                        rs = pst.executeQuery();
+
+                        while (rs.next()) {
+                            textNom.setText(rs.getString("employe_nom").toUpperCase());
+                            textBienvenue.setVisible(true);
+                            textNom.setVisible(true);
+                            // textNomClientBis.setEditable(false);
+                        }
+                        con.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
-            
+
         };
         tr.start();
-        
-    }
-    
-    
-    
-     public void prenomEmploye()
-    {
-        Thread tr=new Thread(){
-            @Override
-            public void run()
-            {
-                for(;;)
-                {
-                      try{
-            connexionClient();
-            String requeteSelectPrenom="SELECT employe_prenom FROM employe WHERE employe_mail=?";
-            pst=con.prepareStatement(requeteSelectPrenom);
-            pst.setString(1, getMailAdress());
-            rs=pst.executeQuery();
 
-            while(rs.next())
-            {
-                textPrenom.setText(rs.getString("employe_prenom"));
-                textPrenom.setVisible(true);
-                buttonDeco.setVisible(true);
-               // textNomClientBis.setEditable(false);
-            }
-            con.close();
-        }catch(Exception e)
-        {
-            e.printStackTrace();
-        }
+    }
+
+    public void prenomEmploye() {
+        Thread tr = new Thread() {
+            @Override
+            public void run() {
+                for (;;) {
+                    try {
+                        connexion();
+                        String requeteSelectPrenom = "SELECT employe_prenom FROM employe WHERE employe_mail=?";
+                        pst = con.prepareStatement(requeteSelectPrenom);
+                        pst.setString(1, getMailAdress());
+                        rs = pst.executeQuery();
+
+                        while (rs.next()) {
+                            textPrenom.setText(rs.getString("employe_prenom"));
+                            textPrenom.setVisible(true);
+                            buttonDeco.setVisible(true);
+                            // textNomClientBis.setEditable(false);
+                        }
+                        con.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
-            
+
         };
         tr.start();
-        
+
     }
-     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -739,7 +700,7 @@ public class Home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -748,36 +709,36 @@ public class Home extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
 
         //fenetre pour choisir nombre d'article va s'afficher
-    Poppup_Panier  page=new Poppup_Panier();
-    page.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //permet de fermer que cette page
-    page.setVisible(true);
+        Poppup_Panier page = new Poppup_Panier();
+        page.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //permet de fermer que cette page
+        page.setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
 
     //clique 2e article
-    
+
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        Poppup_Panier  page=new Poppup_Panier();
-    page.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //permet de fermer que cette page
-    page.setVisible(true);
+        Poppup_Panier page = new Poppup_Panier();
+        page.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //permet de fermer que cette page
+        page.setVisible(true);
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-    
-    Poppup_Panier  page=new Poppup_Panier();
-    page.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //permet de fermer que cette page
-    page.setVisible(true);
+
+        Poppup_Panier page = new Poppup_Panier();
+        page.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //permet de fermer que cette page
+        page.setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-          Poppup_Panier  page=new Poppup_Panier();
-    page.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //permet de fermer que cette page
-    page.setVisible(true);
+        Poppup_Panier page = new Poppup_Panier();
+        page.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //permet de fermer que cette page
+        page.setVisible(true);
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
-        Poppup_Panier  page=new Poppup_Panier();
-    page.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //permet de fermer que cette page
-    page.setVisible(true);
+        Poppup_Panier page = new Poppup_Panier();
+        page.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //permet de fermer que cette page
+        page.setVisible(true);
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -802,36 +763,36 @@ public class Home extends javax.swing.JFrame {
 
     //.........clique sur le panier.......
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
-    Panier  page=new Panier();
-    page.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //permet de fermer que cette page
-    page.setVisible(true);
+        Panier page = new Panier();
+        page.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //permet de fermer que cette page
+        page.setVisible(true);
     }//GEN-LAST:event_jButton6MouseClicked
 
-  
+
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
 
     }//GEN-LAST:event_jButton7MouseClicked
 
     //.....clique sur bouton employé.....
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-     PageConnexionEmploye page=new PageConnexionEmploye();
-    page.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //permet de fermer que cette page
-    page.setVisible(true);
+        PageConnexionEmploye page = new PageConnexionEmploye();
+        page.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //permet de fermer que cette page
+        page.setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
-  //.........clique sur l'utilisateur.......
+    //.........clique sur l'utilisateur.......
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         //si utilisateur pas encore connecté afficher fenetre de choix
-    PageConnexionClient page=new PageConnexionClient();
-    page.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //permet de fermer que cette page
-    page.setVisible(true);
+        PageConnexionClient page = new PageConnexionClient();
+        page.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //permet de fermer que cette page
+        page.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void buttonDecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDecoActionPerformed
         // TODO add your handling code here:
         Home.super.dispose();
-        connexionClient();
-        
-        Home homepage=new Home();
+        connexion();
+
+        Home homepage = new Home();
         homepage.setVisible(true);
     }//GEN-LAST:event_buttonDecoActionPerformed
 

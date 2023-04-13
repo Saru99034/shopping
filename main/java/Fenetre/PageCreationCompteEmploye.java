@@ -33,7 +33,7 @@ public class PageCreationCompteEmploye extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-       public void connexionEmploye()
+       public void connexion()
     {
         try{
             //maconnexion= new Connexion("shopping","root","");
@@ -329,7 +329,7 @@ public class PageCreationCompteEmploye extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     try{
-        connexionEmploye();
+        connexion();
         pst=con.prepareStatement("INSERT INTO employe(id_employe,employe_nom,employe_prenom,employe_sexe,employe_tel,employe_mail,employe_num_voie,employe_adresse,employe_ville,employe_pays,employe_mdp) VALUES(NULL,?,?,?,?,?,?,?,?,?,?)");  //requête de création compte employé
         pst.setString(1,textNomEmploye.getText().toUpperCase());
         pst.setString(2,textPrenomEmploye.getText().toUpperCase());
