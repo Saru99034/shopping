@@ -413,6 +413,11 @@ public class PageEmpConnecte extends javax.swing.JFrame {
 
     private void addArticleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addArticleActionPerformed
         // TODO add your handling code here:
+        PageEmpConnecte.super.dispose();
+        connexion();
+        
+       AjoutArticle addProduct = new AjoutArticle(getMailAdress());
+       addProduct.setVisible(true);
     }//GEN-LAST:event_addArticleActionPerformed
 
     private void showOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showOrdersActionPerformed
