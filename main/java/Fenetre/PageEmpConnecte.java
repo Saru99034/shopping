@@ -399,6 +399,11 @@ public class PageEmpConnecte extends javax.swing.JFrame {
 
     private void deleteArticleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteArticleActionPerformed
         // TODO add your handling code here:
+        PageEmpConnecte.super.dispose();
+        connexion();
+        
+       SupprimerArticle deleteProduct = new SupprimerArticle(getMailAdress());
+       deleteProduct.setVisible(true);
     }//GEN-LAST:event_deleteArticleActionPerformed
 
     private void editArticleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editArticleActionPerformed
