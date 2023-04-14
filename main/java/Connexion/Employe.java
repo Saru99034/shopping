@@ -26,7 +26,6 @@ public class Employe extends Personne {
         this.ville_personne=ville;
         this.pays_personne=pays;
         this.employe_mdp=mdp;
-          this.connexion_personne=false; //initialise à false= pas connecté
     }
     
     
@@ -82,18 +81,7 @@ public class Employe extends Personne {
         
         return this.pays_personne;
     }
-    
-    @Override
-    public Boolean getConnexionPersonne() {
-        
-        return this.connexion_personne;
-    }
 
-     @Override
-    public void setConnexionPersonne(Boolean p) {
-        
-        this.connexion_personne=p;
-    }
     @Override
     public String toString() {
         

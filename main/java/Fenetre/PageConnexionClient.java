@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class PageConnexionClient extends javax.swing.JFrame {
 
+    private String adressMail;
     /**
      * Creates new form PageConnexionClient
      */
@@ -30,8 +31,12 @@ public class PageConnexionClient extends javax.swing.JFrame {
     PreparedStatement pst;
     ResultSet rs;
     
+    public String getAdressMail()
+    {
+        return this.adressMail;
+    }
     
-    public void connexionClient()
+    public void connexion()
     {
         try{
             //maconnexion= new Connexion("shopping","root","");
@@ -188,19 +193,22 @@ public class PageConnexionClient extends javax.swing.JFrame {
     private void jButtonConnexionClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnexionClientActionPerformed
         // TODO add your handling code here:
         try{
-          connexionClient();  //connexion à la base de données
+          connexion();  //connexion à la base de données
           pst=con.prepareStatement("SELECT * FROM client WHERE client_mail=? and client_mdp=?");  //requête de login client
           pst.setString(1,textAdresseMailClient.getText());
           pst.setString(2,PasswordClient.getText());
           rs=pst.executeQuery();
-          
+          adressMail=textAdresseMailClient.getText();
           ///les conditions de connexion
           if(rs.next())  // si le client s'est bien connecté
           {
               String messageTempo1="Bienvenue "+textAdresseMailClient.getText();
               JOptionPane.showMessageDialog(null,messageTempo1);
-              super.dispose();
-              
+              PageConnexionClient.super.dispose();
+              Home coPageClient=new Home(textAdresseMailClient.getText());
+              coPageClient.setVisible(true);
+             /* PageHomeConnecteClient coPageClient=new PageHomeConnecteClient(textAdresseMailClient.getText());
+              coPageClient.setVisible(true);*/
               
           }else
           {
@@ -230,7 +238,7 @@ public class PageConnexionClient extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

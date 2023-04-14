@@ -12,7 +12,7 @@ import Fenetre.*;
 public class Controleur {
     
     public static void main(String[] args) {
-        Fenetre fe=new Fenetre();
+        Home fe=new Home();
         fe.setVisible(true);
     }
 }

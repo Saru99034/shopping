@@ -14,7 +14,6 @@ public class Client extends Personne {
     
     //private int client_id;
     private String client_mdp=new String();
-    private Panier mon_panier= new Panier(); 
     
     public Client(String nom,String prenom,int numero,String mail,int numero_voie,String adresse,String ville,String pays,String mdp){
        
@@ -28,7 +27,6 @@ public class Client extends Personne {
         this.ville_personne=ville;
         this.pays_personne=pays;
         this.client_mdp=mdp;
-        this.connexion_personne=false; //initialise à false= pas connecté
            
     }
     
@@ -91,17 +89,6 @@ public class Client extends Personne {
         return this.pays_personne;
     }
 
-     @Override
-    public Boolean getConnexionPersonne() {
-        
-        return this.connexion_personne;
-    }
-    
-      @Override
-    public void setConnexionPersonne(Boolean p) {
-        
-        this.connexion_personne=p;
-    }
     @Override
     public String toString() {
         
