@@ -1,18 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Fenetre;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*; // pour ActionEvent et ActionListener
-/**
-/**
- *
- * @author USER
- */
-public class Poppup_Panier extends javax.swing.JFrame {
 
+import Connexion.Panier;
+import Connexion.Article;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
+public class Poppup_Panier extends javax.swing.JFrame {
+    
+
+        Panier pan= new Panier(); //Je récupère le panier
+       ArrayList<Article> list_article = new ArrayList();
+
+       int ref=0;
+       int prix=0;
+       
+        public Panier setPanierList(Panier p) {
+        return pan=p;
+    } 
+        
+       public  ArrayList<Article>  setArticleList( ArrayList<Article> p)
+       {
+           return list_article=p;
+       }
+      
+    
+
+ public int setRef(int p) {
+        return ref=p;
+    } 
     /**
      * Creates new form Poppup_Panier
      */
@@ -20,6 +35,39 @@ public class Poppup_Panier extends javax.swing.JFrame {
         initComponents();
     }
 
+    //...methode qui calcul le prix...
+    public void prix(int nb, Article a)
+    {
+        int tmp=0;
+        
+        if(nb<a.getQuantite_pack()) //si pas assez d'articles pour promo
+        {
+            for(int i=0; i<nb; i++)
+        {
+            prix+= a.getPrix_unitaire(); //on additionne 
+        }
+        }else //si promo
+        {
+            tmp=(nb/a.getQuantite_pack()); // pour savoir à combien de reductions j'ai le droit
+            tmp=(tmp*a.getQuantite_pack()); // pour savoir sur combien d'articles j'ai la reduction
+            
+            //calcul le prix
+            for(int i=0; i<tmp; i++)
+            {
+                 prix+= a.getPrix_pack(); //on additionne avec promo
+            }
+            
+            for(int i=0; i<nb-tmp; i++)
+            {
+                  prix+= a.getPrix_unitaire(); //on additionne avec le reste hors pormo
+            }
+        }
+        
+        //System.out.println( "Prix : "+ prix+ " nb:"+nb);
+        jLabelPrix.setText(" "+prix);
+        
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,12 +91,13 @@ public class Poppup_Panier extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
+        Bouton_QT = new javax.swing.JSpinner();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
+        jLabelPrix = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,35 +109,44 @@ public class Poppup_Panier extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jButton1.setText("Pentalons");
+        jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
 
         jButton2.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jButton2.setText("Robes");
+        jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
 
         jButton3.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jButton3.setText("Vestes");
+        jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
 
         jButton4.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jButton4.setText("Chaussures");
+        jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
 
         jButton5.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jButton5.setText("Sacs");
+        jButton5.setBorderPainted(false);
         jButton5.setContentAreaFilled(false);
 
         jButton6.setFont(new java.awt.Font("Sitka Small", 0, 12)); // NOI18N
         jButton6.setText("Accessoires");
+        jButton6.setBorderPainted(false);
         jButton6.setContentAreaFilled(false);
 
-        jButton7.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\image\\iconSac.png")); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\iconSac.png")); // NOI18N
+        jButton7.setBorderPainted(false);
         jButton7.setContentAreaFilled(false);
 
-        jButton8.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\image\\iconUtilisateur.png")); // NOI18N
+        jButton8.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\iconUtilisateur.png")); // NOI18N
+        jButton8.setBorderPainted(false);
         jButton8.setContentAreaFilled(false);
 
-        jButton9.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\image\\IconAdmin.png")); // NOI18N
+        jButton9.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\IconAdmin.png")); // NOI18N
+        jButton9.setBorderPainted(false);
         jButton9.setContentAreaFilled(false);
 
         jTextField1.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
@@ -103,12 +161,29 @@ public class Poppup_Panier extends javax.swing.JFrame {
 
         jLabel3.setText("Nom article + description");
 
+        Bouton_QT.setValue(1);
+        Bouton_QT.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                Bouton_QTStateChanged(evt);
+            }
+        });
+        Bouton_QT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Bouton_QTMouseClicked(evt);
+            }
+        });
+        Bouton_QT.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                Bouton_QTComponentShown(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Sitka Small", 1, 18)); // NOI18N
         jLabel4.setText("Quantité:");
         jLabel4.setToolTipText("");
 
         jLabel5.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
-        jLabel5.setText("Prix:");
+        jLabel5.setText("Prix: ");
 
         jLabel6.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel6.setText("Prix unitaire:");
@@ -126,6 +201,8 @@ public class Poppup_Panier extends javax.swing.JFrame {
                 jButton10MouseClicked(evt);
             }
         });
+
+        jLabelPrix.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -171,8 +248,11 @@ public class Poppup_Panier extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel4)
                                         .addGap(76, 76, 76)
-                                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel5)))
+                                        .addComponent(Bouton_QT, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabelPrix, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jLabel6))
                         .addContainerGap(280, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -187,10 +267,10 @@ public class Poppup_Panier extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
+                    .addComponent(jButton7)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jButton9))
+                        .addComponent(jButton9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -208,11 +288,13 @@ public class Poppup_Panier extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel4)
-                                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(Bouton_QT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(40, 40, 40))
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel5)
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabelPrix, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(134, 134, 134)
                         .addComponent(jLabel6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,9 +328,53 @@ public class Poppup_Panier extends javax.swing.JFrame {
 
     //.....si ajout d'un artcile dans le panier....
     private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+       //verifier le nombre d'article
+        
+       int verifNum= (int) Bouton_QT.getValue(); //récupère valeur du spinner
+   
+       
+       if((verifNum<= 0)|| (verifNum>list_article.get(ref).getStock()) ) //si la quantité sélectionné dépasse le stock ou est inférieur à 0
+        {
+             JOptionPane.showMessageDialog(this, "Veuillez changer la quantité");
+        }else //sinon ajouter dans panier
+        {
+         //ajouter article dans panier
+     
+       list_article.get(ref).setQt_client(verifNum); //récupère nb d'articles
+       list_article.get(ref).setPrix_client(prix); //récupère prix tot pour cet article
+       pan.Ajouter(list_article.get(ref));
+       pan.setPrix(pan.getPrix()+prix); //mettre à jour le prix total du panier
+      
+           
         // afficher message
-         JOptionPane.showMessageDialog(this, "L'article est dans votre Panier!");
+       JOptionPane.showMessageDialog(this, "L'article est dans votre Panier!");
+        }  
+   
     }//GEN-LAST:event_jButton10MouseClicked
+
+    private void Bouton_QTComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_Bouton_QTComponentShown
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Bouton_QTComponentShown
+
+    private void Bouton_QTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Bouton_QTMouseClicked
+
+    }//GEN-LAST:event_Bouton_QTMouseClicked
+
+    private void Bouton_QTStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_Bouton_QTStateChanged
+           // quand je change valeur de mon spinner 
+        
+        int verifNum= (int) Bouton_QT.getValue(); //récupère valeur du spinner
+        prix=0;
+          //System.out.println( "Prix 1 : "+ prix);
+        if(verifNum> 0) //si la quantité sélectionné supérieur à 0 on affiche le prix progressif
+        {
+           
+           prix(verifNum,list_article.get(ref) ); //on calcul le prix
+       
+          
+        }
+         //  System.out.println( "Prix 2 : "+ prix);
+    }//GEN-LAST:event_Bouton_QTStateChanged
 
     /**
      * @param args the command line arguments
@@ -286,6 +412,7 @@ public class Poppup_Panier extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner Bouton_QT;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
@@ -303,8 +430,8 @@ public class Poppup_Panier extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelPrix;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

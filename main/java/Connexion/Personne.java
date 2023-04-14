@@ -20,6 +20,7 @@ public abstract class Personne {
     protected String adresse_personne=new String();
     protected String ville_personne=new String();
     protected String pays_personne=new String();
+    protected Boolean connexion_personne; //permet de savoir si la personne s'est bien connecté ou pas
     
     
     public abstract String getNomPersonne();
@@ -30,6 +31,8 @@ public abstract class Personne {
     public abstract String getAdressePersonne();
     public abstract String getVillePersonne();
     public abstract String getPaysPersonne();
+    public abstract Boolean getConnexionPersonne();
+    public abstract void setConnexionPersonne(Boolean p);
     
     @Override
     public abstract String toString();

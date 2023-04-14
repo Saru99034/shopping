@@ -31,7 +31,7 @@ public class PageConnexionClient extends javax.swing.JFrame {
     ResultSet rs;
     
     
-    public void connexion()
+    public void connexionClient()
     {
         try{
             //maconnexion= new Connexion("shopping","root","");
@@ -188,7 +188,7 @@ public class PageConnexionClient extends javax.swing.JFrame {
     private void jButtonConnexionClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnexionClientActionPerformed
         // TODO add your handling code here:
         try{
-          connexion();  //connexion à la base de données
+          connexionClient();  //connexion à la base de données
           pst=con.prepareStatement("SELECT * FROM client WHERE client_mail=? and client_mdp=?");  //requête de login client
           pst.setString(1,textAdresseMailClient.getText());
           pst.setString(2,PasswordClient.getText());
@@ -199,11 +199,7 @@ public class PageConnexionClient extends javax.swing.JFrame {
           {
               String messageTempo1="Bienvenue "+textAdresseMailClient.getText();
               JOptionPane.showMessageDialog(null,messageTempo1);
-              PageConnexionClient.super.dispose();
-              Home coPageClient=new Home(textAdresseMailClient.getText());
-              coPageClient.setVisible(true);
-             /* PageHomeConnecteClient coPageClient=new PageHomeConnecteClient(textAdresseMailClient.getText());
-              coPageClient.setVisible(true);*/
+              
               
           }else
           {

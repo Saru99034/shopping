@@ -11,41 +11,47 @@ package Connexion;
 import java.util.ArrayList;
 
 public class Panier {
-    private  ArrayList <Pair> listeArticle; // Liste d'article associé a son nombre
+   
+    private ArrayList<Article> list_article = new ArrayList();
     private int prix;
-    public Panier(){
-        listeArticle=null;
-        prix=0;
+    
+    public ArrayList<Article> getArrayList() {
+        return this.list_article;
     }
 
-    public void addArticle(Article a){
-        
-        for(int i=0;i<listeArticle.size();i++){
-            if(listeArticle.get(i).first.getRef()==a.getRef()) {
-                listeArticle.get(i).second++;
-            }
-            else listeArticle.add(new Pair(a));
-            prix+=a.getPrix();
-           
-            //
+
+    public int getListSize() {
+        return this.list_article.size();
+    }
+
+
+    public int getPrix(){ //retourne le prix total du panier
+        return this.prix;
+    }
+
+    public void setPrix(int p)
+    {
+        this.prix=p;
+    }
+    public void setArrayList(ArrayList<Article> arrayList) {
+        this.list_article = arrayList;
+    }
+    
+    //....calcul prix total de mon panier....
+
+   /* public Object Supprimer() {
+        if (this.getListSize() == 0) {
+            System.out.println("Erreur : La liste est vide");
+            return null;
+        } else {
+            return this.arrayList.remove(this.position);
         }
-    }
-    public void remove(Article a){
-        for(int i=0;i<listeArticle.size();i++){
-            if(listeArticle.get(i).first.getRef()==a.getRef()){
-                if(listeArticle.get(i).second>1) listeArticle.get(i).second--;
-                else listeArticle.remove(i);
-                prix-=a.getPrix();
-                //Ajouter 1 dans le stock de l'article
-            }
-        }
-    }
+    }*/
 
-    public  ArrayList<Pair> getListeArticle() {
-        return listeArticle;
+    //ajoute un article au panier
+    public void Ajouter(Article obj) {
+        this.list_article.add(obj);
     }
-
-    public int getPrix() {
-        return prix;
-    }
+    
+    
 }

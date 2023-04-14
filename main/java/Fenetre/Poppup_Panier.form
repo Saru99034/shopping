@@ -88,9 +88,13 @@
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                                          <Component id="jSpinner1" min="-2" pref="87" max="-2" attributes="0"/>
+                                          <Component id="Bouton_QT" min="-2" pref="87" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="jLabel5" min="-2" pref="74" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jLabelPrix" min="-2" pref="68" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -113,11 +117,11 @@
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton7" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jButton8" alignment="1" pref="0" max="32767" attributes="0"/>
-                          <Component id="jButton7" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jButton9" alignment="1" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jButton9" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -137,14 +141,17 @@
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="Bouton_QT" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jLabel3" min="-2" pref="95" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelPrix" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -180,6 +187,7 @@
               <Font name="Sitka Small" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Pentalons"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -189,6 +197,7 @@
               <Font name="Sitka Small" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Robes"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -198,6 +207,7 @@
               <Font name="Sitka Small" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Vestes"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -207,6 +217,7 @@
               <Font name="Sitka Small" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Chaussures"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -216,6 +227,7 @@
               <Font name="Sitka Small" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Sacs"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -225,30 +237,34 @@
               <Font name="Sitka Small" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Accessoires"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton7">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\ING3\Info\Projet\Netbeans\image\iconSac.png"/>
+              <Image iconType="2" name="D:\ING3\Info\Projet\Netbeans\mavenproject1\image\iconSac.png"/>
             </Property>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton8">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\ING3\Info\Projet\Netbeans\image\iconUtilisateur.png"/>
+              <Image iconType="2" name="D:\ING3\Info\Projet\Netbeans\mavenproject1\image\iconUtilisateur.png"/>
             </Property>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton9">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\ING3\Info\Projet\Netbeans\image\IconAdmin.png"/>
+              <Image iconType="2" name="D:\ING3\Info\Projet\Netbeans\mavenproject1\image\IconAdmin.png"/>
             </Property>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -273,7 +289,17 @@
             <Property name="text" type="java.lang.String" value="Nom article + description"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinner1">
+        <Component class="javax.swing.JSpinner" name="Bouton_QT">
+          <Properties>
+            <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="1" type="code"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="Bouton_QTStateChanged"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Bouton_QTMouseClicked"/>
+            <EventHandler event="componentShown" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="Bouton_QTComponentShown"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
@@ -289,7 +315,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SimSun" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Prix:"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;Prix: &quot;" type="code"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
@@ -329,6 +357,13 @@
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton10MouseClicked"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabelPrix">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SimSun" size="14" style="0"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
