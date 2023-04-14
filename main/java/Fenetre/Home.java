@@ -179,7 +179,7 @@ public class Home extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
         jLabel12.setText("1000€");
 
-        BPant.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\iconeCad.png")); // NOI18N
+        BPant.setIcon(new javax.swing.ImageIcon("./image/iconeCad.png"));
         BPant.setBorderPainted(false);
         BPant.setContentAreaFilled(false);
         BPant.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -193,7 +193,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\iconeCad.png")); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon("./image/iconeCad.png"));
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -202,7 +202,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\iconeCad.png")); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon("./image/iconeCad.png"));
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -222,7 +222,7 @@ public class Home extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
         jLabel16.setText("1000€");
 
-        jButton4.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\iconeCad.png")); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon("./image/iconeCad.png"));
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -242,7 +242,7 @@ public class Home extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("SimSun", 0, 12)); // NOI18N
         jLabel20.setText("1000€");
 
-        jButton5.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\iconeCad.png")); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon("./image/iconeCad.png"));
         jButton5.setBorderPainted(false);
         jButton5.setContentAreaFilled(false);
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -299,7 +299,7 @@ public class Home extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47)
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 69, Short.MAX_VALUE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel18)
@@ -373,7 +373,7 @@ public class Home extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Sitka Small", 1, 36)); // NOI18N
         jLabel21.setText("BOUTIQUE");
 
-        jButton6.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\iconSac.png")); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon("./image/iconSac.png"));
         jButton6.setBorderPainted(false);
         jButton6.setContentAreaFilled(false);
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -382,7 +382,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\iconUtilisateur.png")); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon("./image/iconUtilisateur.png"));
         jButton7.setBorderPainted(false);
         jButton7.setContentAreaFilled(false);
         jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -396,7 +396,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton9.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\IconAdmin.png")); // NOI18N
+        jButton9.setIcon(new javax.swing.ImageIcon("./image/IconAdmin.png"));
         jButton9.setBorderPainted(false);
         jButton9.setContentAreaFilled(false);
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -632,7 +632,7 @@ public class Home extends javax.swing.JFrame {
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
               //fenetre pour choisir nombre d'article va s'afficher
     int ref=4; //c'est l'article 0 de ma liste d'article qui a été sélectionné 
-  
+  //  super.dispose();
     Poppup_Panier  page=new Poppup_Panier();
     page.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); //permet de fermer que cette page
    

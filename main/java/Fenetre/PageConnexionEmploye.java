@@ -198,6 +198,7 @@ public class PageConnexionEmploye extends javax.swing.JFrame {
           {
               String messageTempo1="Bienvenue "+textAdresseMailEmploye.getText();
               JOptionPane.showMessageDialog(null,messageTempo1);
+              super.dispose();
               
           }else
           {

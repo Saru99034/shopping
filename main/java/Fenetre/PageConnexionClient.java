@@ -199,6 +199,7 @@ public class PageConnexionClient extends javax.swing.JFrame {
           {
               String messageTempo1="Bienvenue "+textAdresseMailClient.getText();
               JOptionPane.showMessageDialog(null,messageTempo1);
+              super.dispose();
               
               
           }else

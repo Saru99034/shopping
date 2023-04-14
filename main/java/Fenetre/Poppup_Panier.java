@@ -348,6 +348,7 @@ public class Poppup_Panier extends javax.swing.JFrame {
            
         // afficher message
        JOptionPane.showMessageDialog(this, "L'article est dans votre Panier!");
+          super.dispose();
         }  
    
     }//GEN-LAST:event_jButton10MouseClicked

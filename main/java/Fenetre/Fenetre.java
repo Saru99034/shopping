@@ -401,6 +401,7 @@ public class Fenetre extends javax.swing.JFrame {
           //afficherListeClients(listeClients);
           
           JOptionPane.showMessageDialog(null,"Votre compte a été créé avec succès");
+          super.dispose();
         }catch(Exception e)
         {
             e.printStackTrace();
