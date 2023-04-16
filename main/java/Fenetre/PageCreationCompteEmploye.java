@@ -20,6 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class PageCreationCompteEmploye extends javax.swing.JFrame {
 
+    private String adressMail;
     /**
      * Creates new form PageCreationCompteEmploye
      */
@@ -33,7 +34,13 @@ public class PageCreationCompteEmploye extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-       public void connexion()
+    
+      public String getAdressMail()
+    {
+        return this.adressMail;
+    }
+      
+       public void connexionEmploye()
     {
         try{
             //maconnexion= new Connexion("shopping","root","");
@@ -43,7 +50,7 @@ public class PageCreationCompteEmploye extends javax.swing.JFrame {
         String urlDatabase="jdbc:mysql://localhost:3306/shopping";
         
         //création d'une connexion JDBC à la base 
-          con=DriverManager.getConnection(urlDatabase,"root","");
+          con=DriverManager.getConnection(urlDatabase,"root","root");
         }catch(Exception e)
         {
                e.printStackTrace();
@@ -255,7 +262,7 @@ public class PageCreationCompteEmploye extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(332, 332, 332)
                         .addComponent(jLabel11)))
-                .addContainerGap(407, Short.MAX_VALUE))
+                .addContainerGap(427, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,7 +336,7 @@ public class PageCreationCompteEmploye extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     try{
-        connexion();
+        connexionEmploye();
         pst=con.prepareStatement("INSERT INTO employe(id_employe,employe_nom,employe_prenom,employe_sexe,employe_tel,employe_mail,employe_num_voie,employe_adresse,employe_ville,employe_pays,employe_mdp) VALUES(NULL,?,?,?,?,?,?,?,?,?,?)");  //requête de création compte employé
         pst.setString(1,textNomEmploye.getText().toUpperCase());
         pst.setString(2,textPrenomEmploye.getText().toUpperCase());
@@ -467,7 +474,7 @@ public class PageCreationCompteEmploye extends javax.swing.JFrame {
 
     private void textNumVoieEmployeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textNumVoieEmployeKeyPressed
       String numVoie=textNumVoieEmploye.getText();
-        
+       
         int tailleNumVoie=numVoie.length();
         
         char verifNumVoie=evt.getKeyChar();
@@ -492,6 +499,7 @@ public class PageCreationCompteEmploye extends javax.swing.JFrame {
         }    
     }//GEN-LAST:event_textNumVoieEmployeKeyPressed
 
+       
     private void textAdresseEmployeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textAdresseEmployeKeyPressed
       String adresse=textAdresseEmploye.getText();
         

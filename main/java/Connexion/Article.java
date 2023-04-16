@@ -20,9 +20,9 @@ public class Article {
     private String description;
     private int qt_client; //nb d'articles que le client va vouloir acheter
     private int prix_client; //combien ca va couter au client pour cet article en fct de la quantité
-    
+    private String image;
     //constructeur
-    public Article(String m,int pu, int pp,int qp,int r, int s, String d){
+    public Article(String m,int pu, int pp,int qp,int r, int s, String d,String i){
      
         this.marque=m;
         this.prix_unitaire=pu;
@@ -33,6 +33,7 @@ public class Article {
         this.description=d;
         this.qt_client=0; //initialisé à 0
         this.prix_client=0;
+        this.image=i;
     }
 
     public Article() {
@@ -72,7 +73,9 @@ public class Article {
     public void setDescription(String name) {
         this.description = name;
     }
-      
+          public void setImage(String i){
+        this.image=i;
+    }
     //getters
     public int getPrix_client() {
         return prix_client;
@@ -106,7 +109,9 @@ public class Article {
     public String getMarque() {
         return marque;
     }
-
+ public String getImage() {
+        return image;
+    }
         @Override
     public String toString()
     {

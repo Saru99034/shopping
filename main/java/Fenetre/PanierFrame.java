@@ -4,9 +4,11 @@
  */
 package Fenetre;
 
+
 import Connexion.Panier;
 import javax.swing.JList;
 import Connexion.Article;
+import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -15,6 +17,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -22,8 +26,10 @@ import java.sql.SQLException;
  */
 public class PanierFrame extends javax.swing.JFrame {
     
-
-       Panier pan= new Panier(); //Je récupère le panier
+   private String adressMail;
+       Panier pan= new Panier(getAdresseMail()); //Je récupère le panier
+  
+       //Panier pan= new Panier(); //Je récupère le panier
   
 
        int ref=0;
@@ -33,7 +39,7 @@ public class PanierFrame extends javax.swing.JFrame {
         return pan=p;
     } 
         
-      
+         private int index;
     /**
       
        
@@ -45,7 +51,83 @@ public class PanierFrame extends javax.swing.JFrame {
      
         initComponents();
          //  Article1.setText(" "+pan.getArrayList().get(0).getMarque()+ " "+pan.getArrayList().get(0).getDescription());
- 
+         dateHeure();
+    }
+    
+      public PanierFrame(String adresseMail)
+    {
+        initComponents();
+        this.adressMail=adresseMail;
+        dateHeure();
+        this.index=rechercheIndexClient();
+    }
+    
+       public String getAdresseMail()
+    {
+        return this.adressMail;
+    }
+    
+    public int getIndex()
+    {
+        return this.index;
+    }
+    
+          // sous programme pour avoir la date actuelle et l'heure actuelle
+    public void dateHeure() {
+        Thread tr = new Thread() {
+            @Override
+            public void run() {
+                for (;;) {
+                    try {
+                        Calendar calendrier = new GregorianCalendar();
+
+                        int annee = calendrier.get(Calendar.YEAR);
+                        int mois = calendrier.get(Calendar.MONTH);
+                        int jour = calendrier.get(Calendar.DAY_OF_MONTH);
+
+                        int heure = calendrier.get(Calendar.HOUR_OF_DAY);
+                        int minute = calendrier.get(Calendar.MINUTE);
+                        int seconde = calendrier.get(Calendar.SECOND);
+
+                        mois = mois + 1;
+                        //textDate.setText(jour + "/" + mois + "/" + annee);
+                       // textHeure.setText(heure + ":" + minute + ":" + seconde);
+                        sleep(1000);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+        };
+        tr.start();
+
+    }
+    
+    public int rechercheIndexClient()
+    {
+        try {
+                        
+                        connexion();
+                        String sqlSelectIndexClient = "SELECT id_client from client WHERE client_mail=?";
+                        pst = con.prepareStatement(sqlSelectIndexClient);
+                        pst.setString(1, getAdresseMail());
+                        rs = pst.executeQuery();
+
+                        while(rs.next()) {
+                           // comboBoxMarque.addItem(rs.getString("marque"));
+                           index=rs.getInt("id_client");
+
+                        }
+                        con.close();
+
+                       // return index;
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+           return index;
+        
     }
     
     public void Panier2()
@@ -103,7 +185,7 @@ public class PanierFrame extends javax.swing.JFrame {
             String urlDatabase = "jdbc:mysql://localhost:3306/shopping";
 
             //création d'une connexion JDBC à la base 
-            con = DriverManager.getConnection(urlDatabase,"root", "");
+            con = DriverManager.getConnection(urlDatabase,"root", "root");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -199,7 +281,7 @@ public class PanierFrame extends javax.swing.JFrame {
 
         Article5.setFont(new java.awt.Font("SimSun", 0, 14)); // NOI18N
 
-        jToggleButton1.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\IconTrash.png")); // NOI18N
+        jToggleButton1.setIcon(new javax.swing.ImageIcon("./image/IconTrash.png"));
         jToggleButton1.setBorderPainted(false);
         jToggleButton1.setContentAreaFilled(false);
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -208,7 +290,7 @@ public class PanierFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton11.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\IconTrash.png")); // NOI18N
+        jButton11.setIcon(new javax.swing.ImageIcon("./image/IconTrash.png"));
         jButton11.setBorderPainted(false);
         jButton11.setContentAreaFilled(false);
         jButton11.addActionListener(new java.awt.event.ActionListener() {
@@ -217,7 +299,7 @@ public class PanierFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton12.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\IconTrash.png")); // NOI18N
+        jButton12.setIcon(new javax.swing.ImageIcon("./image/IconTrash.png"));
         jButton12.setBorderPainted(false);
         jButton12.setContentAreaFilled(false);
         jButton12.setDefaultCapable(false);
@@ -227,7 +309,7 @@ public class PanierFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton13.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\IconTrash.png")); // NOI18N
+        jButton13.setIcon(new javax.swing.ImageIcon("./image/IconTrash.png"));
         jButton13.setBorderPainted(false);
         jButton13.setContentAreaFilled(false);
         jButton13.addActionListener(new java.awt.event.ActionListener() {
@@ -236,7 +318,7 @@ public class PanierFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton14.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\IconTrash.png")); // NOI18N
+        jButton14.setIcon(new javax.swing.ImageIcon("./image/IconTrash.png"));
         jButton14.setBorderPainted(false);
         jButton14.setContentAreaFilled(false);
         jButton14.addActionListener(new java.awt.event.ActionListener() {
@@ -251,7 +333,7 @@ public class PanierFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton15.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\IconStylo.png")); // NOI18N
+        jButton15.setIcon(new javax.swing.ImageIcon("./image/IconStylo.png"));
         jButton15.setBorderPainted(false);
         jButton15.setContentAreaFilled(false);
         jButton15.addActionListener(new java.awt.event.ActionListener() {
@@ -260,7 +342,7 @@ public class PanierFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton16.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\IconStylo.png")); // NOI18N
+        jButton16.setIcon(new javax.swing.ImageIcon("./image/IconStylo.png"));
         jButton16.setBorderPainted(false);
         jButton16.setContentAreaFilled(false);
         jButton16.addActionListener(new java.awt.event.ActionListener() {
@@ -269,7 +351,7 @@ public class PanierFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton17.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\IconStylo.png")); // NOI18N
+        jButton17.setIcon(new javax.swing.ImageIcon("./image/IconStylo.png"));
         jButton17.setBorderPainted(false);
         jButton17.setContentAreaFilled(false);
         jButton17.addActionListener(new java.awt.event.ActionListener() {
@@ -278,7 +360,7 @@ public class PanierFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton18.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\IconStylo.png")); // NOI18N
+        jButton18.setIcon(new javax.swing.ImageIcon("./image/IconStylo.png"));
         jButton18.setBorderPainted(false);
         jButton18.setContentAreaFilled(false);
         jButton18.addActionListener(new java.awt.event.ActionListener() {
@@ -287,7 +369,7 @@ public class PanierFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton20.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\IconStylo.png")); // NOI18N
+        jButton20.setIcon(new javax.swing.ImageIcon("./image/IconStylo.png"));
         jButton20.setBorderPainted(false);
         jButton20.setContentAreaFilled(false);
         jButton20.addActionListener(new java.awt.event.ActionListener() {
@@ -415,15 +497,15 @@ public class PanierFrame extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Sitka Small", 1, 36)); // NOI18N
         jLabel4.setText("BOUTIQUE");
 
-        jButton2.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\iconSac.png")); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon("./image/iconSac.png"));
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
 
-        jButton3.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\iconUtilisateur.png")); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon("./image/iconUtilisateur.png"));
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
 
-        jButton4.setIcon(new javax.swing.ImageIcon("D:\\ING3\\Info\\Projet\\Netbeans\\mavenproject1\\image\\IconAdmin.png")); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon("./image/IconAdmin.png"));
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
 
@@ -472,7 +554,7 @@ public class PanierFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1276, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1348, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -487,7 +569,7 @@ public class PanierFrame extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 376, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
                                 .addComponent(jButton4)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton3)
@@ -528,7 +610,7 @@ public class PanierFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1282, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1354, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -794,9 +876,10 @@ public class PanierFrame extends javax.swing.JFrame {
          String dataPrixArticle=Integer.toString(pan.getArrayList().get(i).getPrix_client());
          String dataQuantite=Integer.toString(pan.getArrayList().get(i).getQt_client());
          String dataPrixTot=Integer.toString(pan.getPrix());
-         String datamail="0"; //à modifier CONNECTER ICI
-          
-          String requeteInsertionArticle="INSERT INTO commande(ID,Articles,Quantite,Prix_Articles,Prix_Total,client_mail) VALUES(NULL,?,?,?,?,?)";
+         //String datamail="0"; //à modifier CONNECTER ICI
+            String dataIndex=Integer.toString(getIndex());
+            
+          String requeteInsertionArticle="INSERT INTO commande(ID,Articles,Quantite,Prix_Articles,Prix_Total,id_client) VALUES(NULL,?,?,?,?,?)";
           
           pst=con.prepareStatement(requeteInsertionArticle);
          
@@ -804,9 +887,10 @@ public class PanierFrame extends javax.swing.JFrame {
           pst.setString(2,dataQuantite);
           pst.setString(3,dataPrixArticle);
           pst.setString(4,dataPrixTot);
-          pst.setString(5,datamail);
+          //pst.setString(5,datamail);
+          pst.setString(5,dataIndex);
           
-              System.out.println(" "+dataArticle+ " "+dataQuantite+ " "+ dataPrixArticle+ " "+ dataPrixTot+ " "+datamail  );
+              System.out.println(" "+dataArticle+ " "+dataQuantite+ " "+ dataPrixArticle+ " "+ dataPrixTot+ " "+getAdresseMail() );
           int row=pst.executeUpdate();
           
           }

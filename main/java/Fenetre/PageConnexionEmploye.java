@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package Fenetre;
 
 import java.awt.HeadlessException;
@@ -30,9 +26,10 @@ public class PageConnexionEmploye extends javax.swing.JFrame {
      Connection con;
      PreparedStatement pst;
      ResultSet rs;
-    
-    
-    public void connexion()
+     private String adresseMail;
+
+        
+      public void connexion()
     {
         try{
             //maconnexion= new Connexion("shopping","root","");
@@ -42,14 +39,13 @@ public class PageConnexionEmploye extends javax.swing.JFrame {
         String urlDatabase="jdbc:mysql://localhost:3306/shopping";
         
         //création d'une connexion JDBC à la base 
-          con=DriverManager.getConnection(urlDatabase,"root","");
+          con=DriverManager.getConnection(urlDatabase,"root","root");
         }catch(Exception e)
         {
                e.printStackTrace();
         }
     }
-   
-    
+
     public String getAdressMail()
     {
         return this.adresseMail;
@@ -194,7 +190,7 @@ public class PageConnexionEmploye extends javax.swing.JFrame {
     }//GEN-LAST:event_PasswordEmployeActionPerformed
 
     private void buttonConnexionEmployeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConnexionEmployeActionPerformed
-        try{
+              try{
           connexion();  //connexion à la base de données
           pst=con.prepareStatement("SELECT * FROM employe WHERE employe_mail=? and employe_mdp=?");  //requête de login client
           pst.setString(1,textAdresseMailEmploye.getText());
@@ -225,6 +221,7 @@ public class PageConnexionEmploye extends javax.swing.JFrame {
         {
             e.printStackTrace();
         }
+      
     }//GEN-LAST:event_buttonConnexionEmployeActionPerformed
 
     private void buttonCreerEmployeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreerEmployeActionPerformed
@@ -268,16 +265,6 @@ public class PageConnexionEmploye extends javax.swing.JFrame {
         });
     }
 
-   /* public javax.swing.JButton getButtonCo()
-    {
-        return this.buttonConnexionEmploye;
-    }
-    
-    public String getAdresseMail()
-    {
-        return this.textAdresseMailEmploye.getText();
-    }*/
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField PasswordEmploye;
     private javax.swing.JButton buttonConnexionEmploye;
@@ -288,5 +275,5 @@ public class PageConnexionEmploye extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField textAdresseMailEmploye;
     // End of variables declaration//GEN-END:variables
-    private String adresseMail;
+
 }

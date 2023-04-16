@@ -15,6 +15,22 @@ public class Panier {
     private ArrayList<Article> list_article = new ArrayList();
     private int prix;
     
+    private String adresseMailClient;  //ajout
+    
+    public Panier()   //ajout
+    {
+        
+    }
+    public Panier(String mailAdress)  //ajout
+    {
+        this.adresseMailClient=mailAdress;
+    }
+    
+    public String getMail()   //ajout
+    {
+        return this.adresseMailClient;
+    }
+    
     public ArrayList<Article> getArrayList() {
         return this.list_article;
     }
@@ -36,17 +52,6 @@ public class Panier {
     public void setArrayList(ArrayList<Article> arrayList) {
         this.list_article = arrayList;
     }
-    
-    //....calcul prix total de mon panier....
-
-   /* public Object Supprimer() {
-        if (this.getListSize() == 0) {
-            System.out.println("Erreur : La liste est vide");
-            return null;
-        } else {
-            return this.arrayList.remove(this.position);
-        }
-    }*/
 
     //ajoute un article au panier
     public void Ajouter(Article obj) {

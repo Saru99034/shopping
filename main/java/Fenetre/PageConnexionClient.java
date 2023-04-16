@@ -19,7 +19,8 @@ import javax.swing.JOptionPane;
  */
 public class PageConnexionClient extends javax.swing.JFrame {
 
-    private String adressMail;
+       private String adressMail;
+       
     /**
      * Creates new form PageConnexionClient
      */
@@ -31,7 +32,7 @@ public class PageConnexionClient extends javax.swing.JFrame {
     PreparedStatement pst;
     ResultSet rs;
     
-    public String getAdressMail()
+        public String getAdressMail()
     {
         return this.adressMail;
     }
@@ -46,7 +47,7 @@ public class PageConnexionClient extends javax.swing.JFrame {
         String urlDatabase="jdbc:mysql://localhost:3306/shopping";
         
         //création d'une connexion JDBC à la base 
-          con=DriverManager.getConnection(urlDatabase,"root","");
+          con=DriverManager.getConnection(urlDatabase,"root","root");
         }catch(Exception e)
         {
                e.printStackTrace();
@@ -206,6 +207,7 @@ public class PageConnexionClient extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(null,messageTempo1);
               PageConnexionClient.super.dispose();
               Home coPageClient=new Home(textAdresseMailClient.getText());
+             // coPageClient.chargerArticles();
               coPageClient.setVisible(true);
              /* PageHomeConnecteClient coPageClient=new PageHomeConnecteClient(textAdresseMailClient.getText());
               coPageClient.setVisible(true);*/
@@ -238,7 +240,7 @@ public class PageConnexionClient extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public void main(String args[]) {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

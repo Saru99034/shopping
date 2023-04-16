@@ -77,7 +77,7 @@ public class SupprimerArticle extends javax.swing.JFrame {
             String urlDatabase = "jdbc:mysql://localhost:3306/shopping";
 
             //création d'une connexion JDBC à la base 
-            con = DriverManager.getConnection(urlDatabase,"root", "");
+            con = DriverManager.getConnection(urlDatabase,"root", "root");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -174,6 +174,8 @@ public class SupprimerArticle extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Sitka Small", 1, 36)); // NOI18N
         jLabel1.setText("Supprimer un article");
 
@@ -181,8 +183,12 @@ public class SupprimerArticle extends javax.swing.JFrame {
 
         textHeure.setText("HEURE");
 
+        jLabel2.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel2.setText("Sélectionnez l'article : ");
 
+        buttonDeco.setBackground(new java.awt.Color(0, 0, 0));
+        buttonDeco.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
+        buttonDeco.setForeground(new java.awt.Color(255, 255, 255));
         buttonDeco.setText("SE DECONNECTER");
         buttonDeco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,26 +198,33 @@ public class SupprimerArticle extends javax.swing.JFrame {
 
         comboBoxArticle.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Rechercher un article" }));
 
+        jLabel3.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel3.setText("Marque :");
 
         textMarque.setText("MARQUE");
 
+        jLabel5.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel5.setText("Prix Unitaire : ");
 
         textPrixUnit.setText("PRIX UNIT");
 
         labelEuro1.setText("€");
 
+        jLabel6.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel6.setText("Prix Pack :");
 
         textPrixPack.setText("PRIX PACK");
 
         labelEuro2.setText("€");
 
+        jLabel7.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel7.setText("Quantité Pack :");
 
         textQuantitePack.setText("QUANTITE PACK");
 
+        buttonValider.setBackground(new java.awt.Color(0, 0, 0));
+        buttonValider.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
+        buttonValider.setForeground(new java.awt.Color(255, 255, 255));
         buttonValider.setText("VALIDER");
         buttonValider.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,14 +232,19 @@ public class SupprimerArticle extends javax.swing.JFrame {
             }
         });
 
+        jLabel10.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel10.setText("Stock :");
 
         textStock.setText("STOCK");
 
+        jLabel12.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel12.setText("Description :");
 
         textDescription.setText("DESCRIPTION");
 
+        buttonSupprimer.setBackground(new java.awt.Color(0, 0, 0));
+        buttonSupprimer.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
+        buttonSupprimer.setForeground(new java.awt.Color(255, 255, 255));
         buttonSupprimer.setText("SUPPRIMER");
         buttonSupprimer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,6 +252,9 @@ public class SupprimerArticle extends javax.swing.JFrame {
             }
         });
 
+        buttonRetour.setBackground(new java.awt.Color(0, 0, 0));
+        buttonRetour.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
+        buttonRetour.setForeground(new java.awt.Color(255, 255, 255));
         buttonRetour.setText("RETOUR");
         buttonRetour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -245,12 +266,6 @@ public class SupprimerArticle extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(buttonRetour)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonSupprimer)
-                .addGap(371, 371, 371))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -267,41 +282,47 @@ public class SupprimerArticle extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(textHeure)
                         .addGap(91, 91, 91)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buttonDeco, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(276, 276, 276)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(296, 296, 296)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(276, 276, 276)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7)
                                     .addComponent(jLabel5)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel6))))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(textQuantitePack, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textStock, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textDescription, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addGap(7, 7, 7)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(textPrixUnit)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(labelEuro1, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(textMarque, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(textPrixPack)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelEuro2)))))
-                .addContainerGap(38, Short.MAX_VALUE))
+                                        .addGap(27, 27, 27)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(textQuantitePack, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(textStock, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(textDescription, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                                .addComponent(textPrixUnit)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(labelEuro1, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(textMarque, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(35, 35, 35)
+                                        .addComponent(textPrixPack)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(labelEuro2)))))))
+                .addContainerGap(187, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(buttonRetour)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonSupprimer)
+                .addGap(154, 154, 154)
+                .addComponent(buttonDeco, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,16 +335,14 @@ public class SupprimerArticle extends javax.swing.JFrame {
                             .addComponent(textHeure)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttonDeco))))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboBoxArticle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonValider))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(textMarque))
@@ -342,18 +361,19 @@ public class SupprimerArticle extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(textQuantitePack))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel10)
-                    .addComponent(textStock))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textStock)
+                    .addComponent(jLabel10))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(textDescription))
-                .addGap(125, 125, 125)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textDescription)
+                    .addComponent(jLabel12))
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonSupprimer)
-                    .addComponent(buttonRetour))
-                .addGap(53, 53, 53))
+                    .addComponent(buttonRetour)
+                    .addComponent(buttonDeco))
+                .addGap(136, 136, 136))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

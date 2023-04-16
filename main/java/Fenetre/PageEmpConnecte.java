@@ -99,7 +99,7 @@ public class PageEmpConnecte extends javax.swing.JFrame {
             String urlDatabase = "jdbc:mysql://localhost:3306/shopping";
 
             //création d'une connexion JDBC à la base 
-            con = DriverManager.getConnection(urlDatabase, "root", "");
+            con = DriverManager.getConnection(urlDatabase, "root", "root");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -232,11 +232,15 @@ public class PageEmpConnecte extends javax.swing.JFrame {
         panelBoutons = new javax.swing.JPanel();
         deleteArticle = new javax.swing.JButton();
         addArticle = new javax.swing.JButton();
-        showOrders = new javax.swing.JButton();
+        rechecheCommande = new javax.swing.JButton();
         editArticle = new javax.swing.JButton();
+        rechercheArticle = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1425, 825));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Sitka Small", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -252,6 +256,9 @@ public class PageEmpConnecte extends javax.swing.JFrame {
 
         textPrenom.setText("Prenom");
 
+        buttonDeco.setBackground(new java.awt.Color(0, 0, 0));
+        buttonDeco.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
+        buttonDeco.setForeground(new java.awt.Color(255, 255, 255));
         buttonDeco.setText("SE DECONNECTER");
         buttonDeco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,9 +266,11 @@ public class PageEmpConnecte extends javax.swing.JFrame {
             }
         });
 
-        panelBoutons.setBackground(new java.awt.Color(0, 255, 255));
+        panelBoutons.setBackground(new java.awt.Color(255, 255, 255));
 
-        deleteArticle.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        deleteArticle.setBackground(new java.awt.Color(0, 102, 102));
+        deleteArticle.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        deleteArticle.setForeground(new java.awt.Color(255, 255, 255));
         deleteArticle.setText("Supprimer un article");
         deleteArticle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,7 +278,9 @@ public class PageEmpConnecte extends javax.swing.JFrame {
             }
         });
 
-        addArticle.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        addArticle.setBackground(new java.awt.Color(0, 102, 102));
+        addArticle.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        addArticle.setForeground(new java.awt.Color(255, 255, 255));
         addArticle.setText("Ajouter un article");
         addArticle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,15 +288,19 @@ public class PageEmpConnecte extends javax.swing.JFrame {
             }
         });
 
-        showOrders.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        showOrders.setText("Visualiser les commandes");
-        showOrders.addActionListener(new java.awt.event.ActionListener() {
+        rechecheCommande.setBackground(new java.awt.Color(0, 102, 102));
+        rechecheCommande.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        rechecheCommande.setForeground(new java.awt.Color(255, 255, 255));
+        rechecheCommande.setText("Visualiser les commandes");
+        rechecheCommande.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showOrdersActionPerformed(evt);
+                rechecheCommandeActionPerformed(evt);
             }
         });
 
-        editArticle.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        editArticle.setBackground(new java.awt.Color(0, 102, 102));
+        editArticle.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        editArticle.setForeground(new java.awt.Color(255, 255, 255));
         editArticle.setText("Modifier un article");
         editArticle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -293,19 +308,44 @@ public class PageEmpConnecte extends javax.swing.JFrame {
             }
         });
 
+        rechercheArticle.setBackground(new java.awt.Color(0, 102, 102));
+        rechercheArticle.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        rechercheArticle.setForeground(new java.awt.Color(255, 255, 255));
+        rechercheArticle.setText("Rechercher Articles");
+        rechercheArticle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rechercheArticleActionPerformed(evt);
+            }
+        });
+
+        jButton1.setBackground(new java.awt.Color(0, 102, 102));
+        jButton1.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Rechercher Clients");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelBoutonsLayout = new javax.swing.GroupLayout(panelBoutons);
         panelBoutons.setLayout(panelBoutonsLayout);
         panelBoutonsLayout.setHorizontalGroup(
             panelBoutonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBoutonsLayout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
-                .addGroup(panelBoutonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(editArticle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addArticle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBoutonsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelBoutonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(rechercheArticle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelBoutonsLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(panelBoutonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(addArticle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(editArticle, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelBoutonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(showOrders)
-                    .addComponent(deleteArticle, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelBoutonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(rechecheCommande, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(deleteArticle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(29, 29, 29))
         );
         panelBoutonsLayout.setVerticalGroup(
@@ -317,9 +357,13 @@ public class PageEmpConnecte extends javax.swing.JFrame {
                     .addComponent(addArticle, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelBoutonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(showOrders, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rechecheCommande, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editArticle, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelBoutonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(rechercheArticle, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -339,7 +383,7 @@ public class PageEmpConnecte extends javax.swing.JFrame {
                         .addComponent(textNom)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(textPrenom)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 361, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(244, 244, 244)
                 .addComponent(buttonDeco, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -347,7 +391,7 @@ public class PageEmpConnecte extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(426, 426, 426)
                 .addComponent(panelBoutons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(434, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,7 +414,7 @@ public class PageEmpConnecte extends javax.swing.JFrame {
                             .addComponent(textPrenom))))
                 .addGap(107, 107, 107)
                 .addComponent(panelBoutons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(264, Short.MAX_VALUE))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -425,9 +469,27 @@ public class PageEmpConnecte extends javax.swing.JFrame {
        addProduct.setVisible(true);
     }//GEN-LAST:event_addArticleActionPerformed
 
-    private void showOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showOrdersActionPerformed
+    private void rechecheCommandeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechecheCommandeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_showOrdersActionPerformed
+        PageEmpConnecte.super.dispose();
+        connexion();
+        
+       RechercheCommandeClient com = new RechercheCommandeClient(getMailAdress());
+       com.setVisible(true);
+    }//GEN-LAST:event_rechecheCommandeActionPerformed
+
+    private void rechercheArticleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechercheArticleActionPerformed
+         // TODO add your handling code here:
+        PageEmpConnecte.super.dispose();
+        connexion();
+        
+       RechercheArticle addProduct = new RechercheArticle(getMailAdress());
+       addProduct.setVisible(true);
+    }//GEN-LAST:event_rechercheArticleActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -470,10 +532,12 @@ public class PageEmpConnecte extends javax.swing.JFrame {
     private javax.swing.JButton buttonDeco;
     private javax.swing.JButton deleteArticle;
     private javax.swing.JButton editArticle;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panelBoutons;
-    private javax.swing.JButton showOrders;
+    private javax.swing.JButton rechecheCommande;
+    private javax.swing.JButton rechercheArticle;
     private javax.swing.JLabel textBienvenue;
     private javax.swing.JLabel textDate;
     private javax.swing.JLabel textHeure;

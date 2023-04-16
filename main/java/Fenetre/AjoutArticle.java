@@ -60,7 +60,7 @@ public class AjoutArticle extends javax.swing.JFrame {
             String urlDatabase = "jdbc:mysql://localhost:3306/shopping";
 
             //création d'une connexion JDBC à la base 
-            con = DriverManager.getConnection(urlDatabase,"root", "");
+            con = DriverManager.getConnection(urlDatabase,"root", "root");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -137,9 +137,14 @@ public class AjoutArticle extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Sitka Small", 1, 36)); // NOI18N
         jLabel1.setText("Ajouter un article");
 
+        buttonDeco.setBackground(new java.awt.Color(0, 0, 0));
+        buttonDeco.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
+        buttonDeco.setForeground(new java.awt.Color(255, 255, 255));
         buttonDeco.setText("SE DECONNECTER");
         buttonDeco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,6 +156,7 @@ public class AjoutArticle extends javax.swing.JFrame {
 
         textHeure.setText("HEURE");
 
+        jLabel2.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel2.setText("Nom de la marque :");
 
         textMarque.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +170,7 @@ public class AjoutArticle extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel3.setText("Prix unitaire :");
 
         textPrixUnit.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -172,6 +179,7 @@ public class AjoutArticle extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel4.setText("Prix Pack :");
 
         textPrixPack.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -180,6 +188,7 @@ public class AjoutArticle extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel5.setText("Quantité Pack : ");
 
         textQuantitePack.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -188,6 +197,7 @@ public class AjoutArticle extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel6.setText("Stock : ");
 
         textStock.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -196,6 +206,7 @@ public class AjoutArticle extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel7.setText("Description :");
 
         textDescription.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -204,6 +215,9 @@ public class AjoutArticle extends javax.swing.JFrame {
             }
         });
 
+        buttonAjout.setBackground(new java.awt.Color(0, 0, 0));
+        buttonAjout.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
+        buttonAjout.setForeground(new java.awt.Color(255, 255, 255));
         buttonAjout.setText("Ajouter l'article");
         buttonAjout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,6 +225,9 @@ public class AjoutArticle extends javax.swing.JFrame {
             }
         });
 
+        buttonRetour.setBackground(new java.awt.Color(0, 0, 0));
+        buttonRetour.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
+        buttonRetour.setForeground(new java.awt.Color(255, 255, 255));
         buttonRetour.setText("Retour");
         buttonRetour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,14 +244,9 @@ public class AjoutArticle extends javax.swing.JFrame {
                 .addComponent(textDate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(buttonRetour)
-                        .addGap(220, 220, 220)
-                        .addComponent(buttonAjout, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(textHeure)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                        .addGap(136, 136, 136)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -247,9 +259,9 @@ public class AjoutArticle extends javax.swing.JFrame {
                                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(45, 45, 45)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(textMarque)
@@ -258,7 +270,12 @@ public class AjoutArticle extends javax.swing.JFrame {
                                     .addComponent(textQuantitePack)
                                     .addComponent(textStock)
                                     .addComponent(textDescription, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(buttonRetour)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonAjout, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(198, 198, 198))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
